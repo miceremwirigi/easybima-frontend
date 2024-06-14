@@ -41,7 +41,7 @@ export default class Cybers extends Component {
             window.alert(json);
             this.handleCybersChange(json.data);
         })
-        .catch(error => window.alert(error)
+        .catch(error => window.alert(error))
     }
 
     render (){
