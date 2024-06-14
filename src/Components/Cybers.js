@@ -31,9 +31,9 @@ export default class Cybers extends Component {
     fetchCybers = () => {
         fetch("/apis/cybers/")
         .then(response => response.json())
-        // .then(json => {
-        //     this.handleCyberResponse(json)
-        // })
+         .then(json => {
+             this.handleCyberResponse(json)
+         })
         // .then(data => console.log(data))
         // .then(json => console.log(json))
         .then(json => {
