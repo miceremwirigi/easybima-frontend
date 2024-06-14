@@ -1,3 +1,9 @@
+:root {
+  --background-color: hsl(236, 89%, 7%);
+  --font-color: #e9e9f0;
+}
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +11,217 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color:var(--font-color);
 }
+
+/* body.container {
+  background-color: hsl(236, 89%, 7%);
+  color:#e9e9f0;
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  display: block;
+}
+
+#header-row {
+  display: flex;
+  grid-template-columns: auto auto auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+
+#body-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  background-color: rgb(15, 1, 51);
+  width: 100vw;
+  min-height: 65vh;
+}
+
+#body-row > div.nav-col {
+  width: 25vw;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+}
+
+#body-row >div.nav-col > nav{
+  display: flex;
+  align-items: centre;
+  justify-content: centre;
+  background-color: blue;
+
+}
+
+#body-row > div.content-col {
+  width: 75vw;
+  background-color: rgb(46, 2, 48);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  height: fit-content;
+}
+
+div {
+  overflow: hidden;
+}
+
+.ms-3 {
+  margin-right: 3vw;
+  margin-left: 3vw;
+}
+
+.ms-5 {
+  margin-right: 5vw;
+  margin-left: 5vw;
+}
+
+.mt-3 {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+}
+
+.mt-5 {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+div.col{
+  display: block;
+  float: left;
+  width: 27%;
+}
+
+div.col.Name-Col {
+  display: flex;
+  align-items: left;
+  justify-content: flex-start;
+  float: left;
+  /* width: 20vw; */
+}
+
+div.col.Name-Col > h1 {
+  display: block;
+  align-items: center;
+}
+
+img.App-Logo{
+  display: block;
+  height:20vmin;
+  float: left;
+}
+
+div.col.Search-Col {
+  justify-content: center;
+}
+
+div.col.Profile-Col {
+  justify-content: flex-end;
+} 
+
+
+/* Display for different screen sizes*/
+
+@media screen and (max-width:600px) {
+  #header-row > div.col{
+    width: 80% !important;
+    margin-bottom: 1vh;
+    margin-left: 5vw;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #header-row > div.col.Name-Col {
+    display: flex;
+    justify-content: left;
+    font-size: 2vw;
+    float:left;
+  }
+
+  #header-row > div.col.Name-Col > h1 {
+    display: flex;
+    font-size: 4vw;
+    float:left;
+    color: blueviolet;
+  }
+  #header-row > div.col.Name-Col > img.App-Logo{
+    display: flex;
+    height:15vmin;
+    float: left;
+  }
+}
+
+
+
+@media screen and (max-width:480px){
+  #header-row > div.col{
+    width: 80% !important;
+    margin-bottom: 5vh;
+    /* display: flex;
+    justify-content: left;
+    align-items: left; */
+  }
+
+  #header-row > div.col.Name-Col {
+    font-size: 2vw;
+    float:left;
+  }
+
+  #header-row > div.col.Name-Col > h1 {
+    font-size: 2vw;
+    float:left;
+  }
+  #header-row > div.col.Name-Col > img.App-Logo{
+    display: block !important;
+    height:10vmin;
+    float: left;
+  }
+}
+
+div.list-group {
+  display: flex-grid;
+  background-color: black;
+  padding: 1rem;
+  /* float:inline-start; */
+  /* width: 30vw; */
+  /* grid-template-columns: 40vw ; */
+  /* background-color: var(--font-color); */
+  /* gap:1rem; */
+
+}
+
+div.list-group > div.list-group-item{
+  width: 20vw;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(8, 49, 3);
+  border-radius: 5%;
+  margin: 0.5rem;
+}
+
+div.list-group > div.list-group-item > div{
+  /* border: 0; */
+  /* margin: 1rem; */
+  background-color:cadetblue;
+  color:var(--background-color);
+  align-items: center;
+  display: flex;
+  justify-content: left;
+  font-size: 1.5rem;
+  width: 80%;
+}
+
+
