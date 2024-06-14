@@ -37,10 +37,11 @@ export default class Cybers extends Component {
         // .then(data => console.log(data))
         // .then(json => console.log(json))
         .then(json => {
-            console.log(json)
-            window.alert(json)
-            this.handleCybersChange(json.data)
-        }).catch(error => window.alert(error)
+            console.log(json);
+            window.alert(json);
+            this.handleCybersChange(json.data);
+        })
+        .catch(error => window.alert(error)
     }
 
     render (){
