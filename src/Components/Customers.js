@@ -1,4 +1,5 @@
 import React, { Component, Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default class Customers extends Component {
     constructor(props) {
@@ -25,6 +26,14 @@ handleCustomersChange(customers) {
     render (){
         return(
             <Fragment>
+                <div className="add-customer-button">
+                    <Link to={"/customers/add"}>
+                        <button >
+                            Add Customer
+                        </button>
+                    </Link>
+                </div>
+                
                 <div className='customers-table'>
                 <table>
                 <thead>

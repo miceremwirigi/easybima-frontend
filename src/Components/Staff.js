@@ -1,4 +1,5 @@
 import React, { Component, Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default class Staff extends Component {
     constructor(props) {
@@ -24,6 +25,14 @@ handleStaffChange(staff) {
     render (){
         return(
             <Fragment>
+                <div className="add-staff-button">
+                    <Link to={"/staff/add"}>
+                        <button >
+                            Add Staff
+                        </button>
+                    </Link>
+                </div>
+
                 <div className='staff-table'>
                 <table>
                 <thead>

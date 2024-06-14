@@ -6,6 +6,8 @@ import Cybers from './Components/Cybers'
 import Customers from './Components/Customers'
 import Staff from './Components/Staff'
 import AddCyberForm from './Components/AddCyberForm';
+import AddCustomerForm from './Components/AddCustomerForm';
+import AddStaffForm from './Components/AddStaffForm';
 import './App.css';
 import './Components/Cybers.css';
 import './Components/Customers.css'
@@ -117,7 +119,9 @@ class App extends Component {
                 <Route path='/cybers' element={<Cybers cybers={this.state.cybers} handleCybersChange={this.handleCybersChange}/>}></Route>
                 <Route path='/cybers/add' element={<AddCyberForm />}></Route>
                 <Route path='/customers' element={<Customers customers={this.state.customers} handleCustomersChange={this.handleCustomersChange}/>}></Route>
+                <Route path='/customers/add' element={<AddCustomerForm />}></Route>
                 <Route path='/staff' element={<Staff staff={this.state.staff} handleStaffChange={this.handleStaffChange}/>}></Route>
+                <Route path='/staff/add' element={<AddStaffForm />}></Route>
               </Routes>
             </div>
 
