@@ -17,14 +17,14 @@ export default class Cybers extends Component {
     }
 
     componentDidMount() {
-        this.handleCybersChange(            
-                 [
-                    {cyber_name: "cyber1", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745852367"},
-                    {cyber_name: "cyber2", area:"Thika", owner_name:"John", owner_phone_number:"0745858667"},
-                    {cyber_name: "cyber3", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745892367"},
-                    {cyber_name: "cyber4", area:"Juja", owner_name:"Richard", owner_phone_number:"0745852367"},
-                ]            
-        )
+       // this.handleCybersChange(            
+       //          [
+       //             {cyber_name: "cyber1", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745852367"},
+       //             {cyber_name: "cyber2", area:"Thika", owner_name:"John", owner_phone_number:"0745858667"},
+       //             {cyber_name: "cyber3", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745892367"},
+       //             {cyber_name: "cyber4", area:"Juja", owner_name:"Richard", owner_phone_number:"0745852367"},
+       //         ]            
+       // )
         this.fetchCybers()
     }
 
