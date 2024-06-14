@@ -1,15 +1,18 @@
 import React, { Component, Fragment } from 'react';
+import { Navigate } from 'react-router-dom';
 
 class AddCyberForm extends Component {
     constructor(props) {
         super(props)
         // this.handleCyberFormData = this.props.handleCyberFormData.bind(this)
         this.state = {newcyber: {
-            cyber_name: "",
-            area: "",
-            owner_name: "",
-            owner_phone_number: ""
-        }}
+                cyber_name: "",
+                area: "",
+                owner_name: "",
+                owner_phone_number: ""
+            },
+            submitted:false,
+        }
     }
 
     handleCyberFormData(entry) {
@@ -22,6 +25,7 @@ class AddCyberForm extends Component {
     submit(entry) {
         entry.preventDefault();
         console.log(entry)
+        this.setState({submitted:true})
         fetch("/apis/cybers",{
             method: "POST",
             headers: {
@@ -31,7 +35,7 @@ class AddCyberForm extends Component {
         })
         .then((response) => response.json())
         .then((reply) => console.log(reply))
-        .catch((error) =>console.log(error) )
+        .catch((error) =>console.log(error))
 
     }
 
@@ -40,13 +44,22 @@ class AddCyberForm extends Component {
             <Fragment>
                 <div className='add-cyber-form'>
                     <form onSubmit={(entry) => this.submit(entry)}>
+                        <label for="cyber_name"> Cyber Name : </label>
                         <input onChange={(entry) => this.handleCyberFormData(entry)} id='cyber_name' value={this.state.newcyber.cyber_name} placeholder="cyber name" type='text'></input>
+                        <br />
+                        <label for="area"> Cyber Location : </label>
                         <input onChange={(entry) => this.handleCyberFormData(entry)} id='area' value={this.state.newcyber.area} placeholder="location" type='text'></input>
+                        <br />
+                        <label for="owner_name"> Owner's Name : </label>
                         <input onChange={(entry) => this.handleCyberFormData(entry)} id='owner_name' value={this.state.newcyber.owner_name} placeholder="owner name" type='text'></input>
+                        <br />
+                        <label for="owner_phone_number"> Owner's Phone Number : </label>
                         <input onChange={(entry) => this.handleCyberFormData(entry)} id='owner_phone_number' value={this.state.newcyber.owner_phone_number} placeholder="contact" type='text'></input>
-                        <input type='submit' value="Submit"></input>
+                        <br />
+                        <input className='form-submit-btn' type='submit' value="Submit"></input>
                     </form>
                 </div>
+                {this.state.submitted && <Navigate to={"/cybers"}/>}
             </Fragment>
         )
     }

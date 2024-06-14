@@ -77,6 +77,11 @@ div {
   overflow: hidden;
 }
 
+a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
 .ms-3 {
   margin-right: 3vw;
   margin-left: 3vw;
@@ -207,7 +212,10 @@ div.list-group > div.list-group-item{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(8, 49, 3);
+  background-color: rgb(3, 11, 49);
+  color:azure;
+  font-size: 1.5rem;
+  text-decoration: none;
   border-radius: 5%;
   margin: 0.5rem;
 }
