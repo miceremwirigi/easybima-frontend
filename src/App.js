@@ -17,24 +17,16 @@ import './Components/AddCyberForm.css';
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      cybers:[],
-      isLoadingData: false,
-      newcybers:[],
-      customers: [],
-      staff: [],
-      backendUrl:process.env.REACT_APP_BACKEND_URL
-    };
+    this.state = {cybers:[]};
+    this.state = {isLoadingData: false};
+    this.state = {newcybers:[]};
+    this.state = {customers: []};
+    this.state = {staff: []};
     this.handleCybersChange = this.handleCybersChange.bind(this);
     this.handleCustomersChange = this.handleCustomersChange.bind(this);
     this.handleStaffChange = this.handleStaffChange.bind(this);
     // this.handleCyberFormData = this.handleCyberFormData.bind(this)
   }
-
-
-  // if (process.env.REACT_APP_ENVIRONMENT == "PROCUVTION"){
-  //    this.setState({backendUrl:""}))
-  // }
 
   handleCybersChange(cybers, isLoadingData){
     this.setState({
@@ -110,12 +102,12 @@ class App extends Component {
             <div className='content-col'>
               <Routes>
               {/* <Route path='/cybers' element={this.state.isLoadingData ? <Loader /> : <Cybers cybers={this.state.cybers} isLoadingData={this.props.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route> */}
-              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} backendUrl={this.state.backendUrl} handleCybersChange={this.handleCybersChange}/>}></Route>
-                <Route path='/cybers/add' element={<AddCyberForm backendUrl={this.state.backendUrl} />}></Route>
-                <Route path='/customers' element={<Customers customers={this.state.customers} backendUrl={this.state.backendUrl} handleCustomersChange={this.handleCustomersChange}/>}></Route>
-                <Route path='/customers/add' element={<AddCustomerForm backendUrl={this.state.backendUrl} />}></Route>
-                <Route path='/staff' element={<Staff staff={this.state.staff} backendUrl={this.state.backendUrl}  handleStaffChange={this.handleStaffChange}/>}></Route>
-                <Route path='/staff/add' element={<AddStaffForm backendUrl={this.state.backendUrl}  />}></Route>
+              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route>
+                <Route path='/cybers/add' element={<AddCyberForm />}></Route>
+                <Route path='/customers' element={<Customers customers={this.state.customers} handleCustomersChange={this.handleCustomersChange}/>}></Route>
+                <Route path='/customers/add' element={<AddCustomerForm />}></Route>
+                <Route path='/staff' element={<Staff staff={this.state.staff} handleStaffChange={this.handleStaffChange}/>}></Route>
+                <Route path='/staff/add' element={<AddStaffForm />}></Route>
               </Routes>
             </div>
 

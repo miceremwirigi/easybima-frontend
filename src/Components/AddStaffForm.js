@@ -26,7 +26,7 @@ class AddStaffForm extends Component {
         entry.preventDefault();
         console.log(entry)
         this.setState({submitted:true})
-        fetch(this.props.backendUrl+"/apis/staff",{
+        fetch("/apis/staff",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

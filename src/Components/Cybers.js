@@ -37,9 +37,8 @@ export default class Cybers extends Component {
         this.handleCybersChange(this.dummyCybers, true);
         
         console.log(this.props.isLoadingData)
-        console.log(this.props.backendUrl)
 
-        await fetch(this.props.backendUrl+"/apis/cybers/")
+        await fetch("/apis/cybers/")
         .then(response => response.json())
         .then(json => {
             this.handleCybersChange(json.data, false)
