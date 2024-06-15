@@ -44,16 +44,16 @@ class AddStaffForm extends Component {
             <Fragment>
                 <div className='add-staff-form'>
                     <form onSubmit={(entry) => this.submit(entry)}>
-                        <label for="staff_name"> Staff Name : </label>
+                        <label htmlFor="staff_name"> Staff Name : </label>
                         <input onChange={(entry) => this.handleStaffFormData(entry)} id='staff_name' value={this.state.newstaff.staff_name} placeholder="staff name" type='text'></input>
                         <br />
-                        <label for="area"> Staff Location : </label>
+                        <label htmlFor="area"> Staff Location : </label>
                         <input onChange={(entry) => this.handleStaffFormData(entry)} id='area' value={this.state.newstaff.area} placeholder="location" type='text'></input>
                         <br />
-                        <label for="owner_name"> Owner's Name : </label>
+                        <label htmlFor="owner_name"> Owner's Name : </label>
                         <input onChange={(entry) => this.handleStaffFormData(entry)} id='owner_name' value={this.state.newstaff.owner_name} placeholder="owner name" type='text'></input>
                         <br />
-                        <label for="owner_phone_number"> Owner's Phone Number : </label>
+                        <label htmlFor="owner_phone_number"> Owner's Phone Number : </label>
                         <input onChange={(entry) => this.handleStaffFormData(entry)} id='owner_phone_number' value={this.state.newstaff.owner_phone_number} placeholder="contact" type='text'></input>
                         <br />
                         <input className='form-submit-btn' type='submit' value="Submit"></input>

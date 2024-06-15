@@ -44,16 +44,16 @@ class AddCustomerForm extends Component {
             <Fragment>
                 <div className='add-customer-form'>
                     <form onSubmit={(entry) => this.submit(entry)}>
-                        <label for="customer_name"> Customer Name : </label>
+                        <label htmlFor="customer_name"> Customer Name : </label>
                         <input onChange={(entry) => this.handleCustomerFormData(entry)} id='customer_name' value={this.state.newcustomer.customer_name} placeholder="customer name" type='text'></input>
                         <br />
-                        <label for="area"> Customer Location : </label>
+                        <label htmlFor="area"> Customer Location : </label>
                         <input onChange={(entry) => this.handleCustomerFormData(entry)} id='area' value={this.state.newcustomer.area} placeholder="location" type='text'></input>
                         <br />
-                        <label for="owner_name"> Owner's Name : </label>
+                        <label htmlFor="owner_name"> Owner's Name : </label>
                         <input onChange={(entry) => this.handleCustomerFormData(entry)} id='owner_name' value={this.state.newcustomer.owner_name} placeholder="owner name" type='text'></input>
                         <br />
-                        <label for="owner_phone_number"> Owner's Phone Number : </label>
+                        <label htmlFor="owner_phone_number"> Owner's Phone Number : </label>
                         <input onChange={(entry) => this.handleCustomerFormData(entry)} id='owner_phone_number' value={this.state.newcustomer.owner_phone_number} placeholder="contact" type='text'></input>
                         <br />
                         <input className='form-submit-btn' type='submit' value="Submit"></input>

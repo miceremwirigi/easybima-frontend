@@ -26,6 +26,14 @@ button:hover {
     background-color: rgb(21, 4, 46);
 }
 
+.content-col > svg {
+    margin-top: 2rem;
+    margin-left:35%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .outer-table-wrapper {
     display: flex;
