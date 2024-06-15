@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { Component, Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from './Loader';
 
@@ -41,20 +41,21 @@ export default class Cybers extends Component {
     fetchCybers = () => {
         this.handleLoadingState(true);        
         console.log(this.props.isLoadingData);
-        fetch("https://easybima-backend.onrender.com/apis/cybers/")
+        const jsonDataResponse = fetch("https://easybima-backend.onrender.com/apis/cybers/")
         .then(response => {
-            this.handleLoadingState(false);
             response.json()
+            .then(json => {
+            this.handleCybersChange(json.data);                    
+            console.log(json) 
         })
-        .then(json => {
-            this.handleCybersChange(json.data)
-            console.log(json)
         })
+        
         .catch((error) => {
                 console.log(error);
                 window.alert(error);
             }
-        )     
+        )               
+        this.handleLoadingState(false);    
     }
 
     componentDidMount() {
