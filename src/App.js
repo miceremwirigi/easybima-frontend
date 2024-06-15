@@ -23,21 +23,25 @@ class App extends Component {
     this.state = {customers: []};
     this.state = {staff: []};
     this.handleCybersChange = this.handleCybersChange.bind(this);
+    this.handleLoadingState = this.handleLoadingState.bind(this);
     this.handleCustomersChange = this.handleCustomersChange.bind(this);
     this.handleStaffChange = this.handleStaffChange.bind(this);
     // this.handleCyberFormData = this.handleCyberFormData.bind(this)
   }
 
-  handleCybersChange(cybers, isLoadingData){
+  handleCybersChange(cybers){
     this.setState({
         cybers: cybers,
       }
     )
+  }
+
+  handleLoadingState(isLoadingData){
     this.setState({
-        isLoadingData: isLoadingData,
-      },
-      () => console.log("Loading = ", this.isLoadingData)
-    )
+      isLoadingData: isLoadingData,
+    },
+    () => console.log("Loading = ", this.state.isLoadingData)
+  )
   }
 
   // handleCyberFormData(newcybersdata) {
@@ -102,7 +106,7 @@ class App extends Component {
             <div className='content-col'>
               <Routes>
               {/* <Route path='/cybers' element={this.state.isLoadingData ? <Loader /> : <Cybers cybers={this.state.cybers} isLoadingData={this.props.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route> */}
-              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route>
+              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange} handleLoadingState={this.handleLoadingState} />}></Route>
                 <Route path='/cybers/add' element={<AddCyberForm />}></Route>
                 <Route path='/customers' element={<Customers customers={this.state.customers} handleCustomersChange={this.handleCustomersChange}/>}></Route>
                 <Route path='/customers/add' element={<AddCustomerForm />}></Route>

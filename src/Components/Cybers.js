@@ -19,11 +19,16 @@ export default class Cybers extends Component {
         constructor(props) {
         super(props);
         this.handleCybersChange = this.handleCybersChange.bind(this);
+        this.handleLoadingState = this.handleLoadingState.bind(this)
         this.dummyCybers = []
     }
 
-    handleCybersChange(cybers, isLoadingData) {
-        this.props.handleCybersChange(cybers, isLoadingData);
+    handleCybersChange (cybers) {
+        this.props.handleCybersChange(cybers);
+    }
+
+    handleLoadingState (isLoadingData) {
+        this.props.handleLoadingState(isLoadingData);
     }
 
     dummyCybers =  [
@@ -33,15 +38,16 @@ export default class Cybers extends Component {
                     {cyber_name: "cyber4", area:"Juja", owner_name:"Richard", owner_phone_number:"0745852367"},
                 ]
 
-    fetchCybers = async () => {
-        this.handleCybersChange(this.dummyCybers, true);
-        
-        console.log(this.props.isLoadingData)
-
-        await fetch("/apis/cybers/")
-        .then(response => response.json())
+    fetchCybers = () => {
+        this.handleLoadingState(true);        
+        console.log(this.props.isLoadingData);
+        fetch("https://easybima-backend.onrender.com/apis/cybers/")
+        .then(response => {
+            this.handleLoadingState(false);
+            response.json()
+        })
         .then(json => {
-            this.handleCybersChange(json.data, false)
+            this.handleCybersChange(json.data)
             console.log(json)
         })
         .catch((error) => {
@@ -54,9 +60,7 @@ export default class Cybers extends Component {
     componentDidMount() {
         // this.handleCybersChange(            
         //          dummyCybers            
-        // )
-
-        
+        // )        
         this.fetchCybers();
     }
 
