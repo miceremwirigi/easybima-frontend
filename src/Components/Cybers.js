@@ -11,9 +11,9 @@ export default class Cybers extends Component {
         this.props.handleCybersChange(cybers)
     }
 
-    handleCyberResponse(json){
-        const response = JSON.parse(json);
-        return response
+    handleCyberResponse(response){
+        const response = JSON.parse(response);
+        return json
     }
 
     componentDidMount() {
@@ -29,7 +29,7 @@ export default class Cybers extends Component {
     }
 
     fetchCybers = () => {
-        fetch("/apis/cybers/")
+        fetch("/apis/cybers")
          // .then(response => response.json())
          .then(response => {
              this.handleCyberResponse(response)
