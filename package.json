@@ -37,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://easybima-backend.onrender.com"
+  "proxy": "https://easybima-backend.onrender.com:8000"
 }
