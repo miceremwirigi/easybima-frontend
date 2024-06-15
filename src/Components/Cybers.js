@@ -1,47 +1,63 @@
 import React, { Component, Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from './Loader';
+
+// function RenderTableAfterLoading(props){
+//     if (props.isLoadingData) {
+//         return (
+//             <loader />
+//         )
+//     }
+//     return (
+//         <>
+        
+//         </>
+//     );
+// }
 
 export default class Cybers extends Component {
         constructor(props) {
         super(props);
         this.handleCybersChange = this.handleCybersChange.bind(this);
+        this.dummyCybers = []
     }
 
-    handleCybersChange(cybers) {
-        this.props.handleCybersChange(cybers)
+    handleCybersChange(cybers, isLoadingData) {
+        this.props.handleCybersChange(cybers, isLoadingData);
     }
 
-    handleCyberResponse(response){
-        const response = JSON.parse(response);
-        return json
+    dummyCybers =  [
+                    {cyber_name: "cyber1", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745852367"},
+                    {cyber_name: "cyber2", area:"Thika", owner_name:"John", owner_phone_number:"0745858667"},
+                    {cyber_name: "cyber3", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745892367"},
+                    {cyber_name: "cyber4", area:"Juja", owner_name:"Richard", owner_phone_number:"0745852367"},
+                ]
+
+    fetchCybers = async () => {
+        this.handleCybersChange(this.dummyCybers, true);
+        
+        console.log(this.props.isLoadingData)
+
+        await fetch("/apis/cybers/")
+        .then(response => response.json())
+        .then(json => {
+            this.handleCybersChange(json.data, false)
+            console.log(json)
+        })
+        .catch((error) => {
+                console.log(error);
+                window.alert(error);
+            }
+        )     
     }
 
     componentDidMount() {
-       // this.handleCybersChange(            
-       //          [
-       //             {cyber_name: "cyber1", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745852367"},
-       //             {cyber_name: "cyber2", area:"Thika", owner_name:"John", owner_phone_number:"0745858667"},
-       //             {cyber_name: "cyber3", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745892367"},
-       //             {cyber_name: "cyber4", area:"Juja", owner_name:"Richard", owner_phone_number:"0745852367"},
-       //         ]            
-       // )
-        this.fetchCybers()
-    }
+        // this.handleCybersChange(            
+        //          dummyCybers            
+        // )
 
-    fetchCybers = () => {
-        fetch("/apis/cybers")
-         // .then(response => response.json())
-         .then(response => {
-             this.handleCyberResponse(response)
-         })
-        // .then(data => console.log(data))
-        // .then(json => console.log(json))
-        .then(json => {
-            console.log(json);
-            window.alert(json);
-            this.handleCybersChange(json.data);
-        })
-        .catch(error => window.alert(error))
+        
+        this.fetchCybers();
     }
 
     render (){
@@ -54,7 +70,12 @@ export default class Cybers extends Component {
                         </button>
                     </Link>
                 </div>
-                <div className="outer-table-wrapper">
+
+                {
+                    this.props.isLoadingData ? <Loader /> :
+                     
+                <>
+                    <div className="outer-table-wrapper">
                     <div className='cybers-table table-wrapper'>
                         <table>
                             <thead>
@@ -80,8 +101,11 @@ export default class Cybers extends Component {
                             </tbody>
                         </table>
                     </div>
-            </div>
-        </Fragment>
+                </div> 
+                </>
+                }               
+                
+            </Fragment>
         );
     }
 }

@@ -14,34 +14,11 @@ import './Components/Customers.css'
 import './Components/Staff.css'
 import './Components/AddCyberForm.css';
 
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {cybers:[]};
+    this.state = {isLoadingData: false};
     this.state = {newcybers:[]};
     this.state = {customers: []};
     this.state = {staff: []};
@@ -51,8 +28,16 @@ class App extends Component {
     // this.handleCyberFormData = this.handleCyberFormData.bind(this)
   }
 
-  handleCybersChange(cybers){
-    this.setState({cybers: cybers})
+  handleCybersChange(cybers, isLoadingData){
+    this.setState({
+        cybers: cybers,
+      }
+    )
+    this.setState({
+        isLoadingData: isLoadingData,
+      },
+      () => console.log("Loading = ", this.isLoadingData)
+    )
   }
 
   // handleCyberFormData(newcybersdata) {
@@ -116,7 +101,8 @@ class App extends Component {
 
             <div className='content-col'>
               <Routes>
-                <Route path='/cybers' element={<Cybers cybers={this.state.cybers} handleCybersChange={this.handleCybersChange}/>}></Route>
+              {/* <Route path='/cybers' element={this.state.isLoadingData ? <Loader /> : <Cybers cybers={this.state.cybers} isLoadingData={this.props.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route> */}
+              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route>
                 <Route path='/cybers/add' element={<AddCyberForm />}></Route>
                 <Route path='/customers' element={<Customers customers={this.state.customers} handleCustomersChange={this.handleCustomersChange}/>}></Route>
                 <Route path='/customers/add' element={<AddCustomerForm />}></Route>
