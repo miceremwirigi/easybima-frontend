@@ -34,3 +34,9 @@ input {
 .form-submit-btn:hover {
     background-color: rgb(192, 165, 236);
 }
+
+.add-cyber-form > form > input {
+    background-color: rgb(2, 1, 24);
+    color: white;
+    font-weight: 600;
+}
