@@ -37,6 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "https://easybima-backend.onrender.com:8000"
+  }
 }
