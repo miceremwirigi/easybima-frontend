@@ -26,7 +26,7 @@ class AddCustomerForm extends Component {
         entry.preventDefault();
         console.log(entry)
         this.setState({submitted:true})
-        fetch("/apis/customers",{
+        fetch(this.props.backendUrl+"/apis/customers",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
