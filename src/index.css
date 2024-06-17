@@ -15,62 +15,62 @@ body {
   color:var(--font-color);
 }
 
-/* body.container {
-  background-color: hsl(236, 89%, 7%);
-  color:#e9e9f0;
-} */
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .container {
-  display: block;
+  padding: .5rem;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  overflow: auto;
+  
 }
 
 #header-row {
   display: flex;
-  grid-template-columns: auto auto auto;
-  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 90vw;
+  
 }
 
 
 #body-row {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  flex-basis: 65vh;
+  overflow: auto;
+  margin-top: 0;
   justify-content: left;
-  background-color: rgb(15, 1, 51);
-  width: 100vw;
-  min-height: 65vh;
 }
 
 #body-row > div.nav-col {
-  width: 25vw;
-  background-color: blueviolet;
   display: flex;
+  flex-direction: column;
+  flex-basis: 25%;
   justify-content: center;
-}
-
-#body-row >div.nav-col > nav{
-  display: flex;
-  align-items: centre;
-  justify-content: centre;
-  background-color: blue;
-
+  margin-bottom: auto;
+  margin-top:5rem;
 }
 
 #body-row > div.content-col {
-  width: 75vw;
-  background-color: rgb(46, 2, 48);
-  display: flex;
+  flex-basis: 70%;
+  display: flex;  
   flex-direction: column;
   justify-content: center;
-  align-items: left;
-  height: fit-content;
+
+}
+
+* {
+  overflow: auto;
 }
 
 div {
@@ -102,107 +102,41 @@ a {
   margin-bottom: 5vh;
 }
 
-div.col{
-  display: block;
-  float: left;
-  width: 27%;
-}
-
-div.col.Name-Col {
+div.Name-Col {
   display: flex;
   align-items: left;
-  justify-content: flex-start;
   float: left;
-  /* width: 20vw; */
+  margin-right: auto;
 }
 
-div.col.Name-Col > h1 {
-  display: block;
-  align-items: center;
+div.Name-Col > h1 {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  margin-top: auto;
 }
 
 img.App-Logo{
   display: block;
-  height:20vmin;
+  height:15vmin;
   float: left;
 }
 
-div.col.Search-Col {
+div.Search-Col {
   justify-content: center;
+  margin-left: auto;
 }
 
-div.col.Profile-Col {
+div.Profile-Col {
   justify-content: flex-end;
-} 
-
-
-/* Display for different screen sizes*/
-
-@media screen and (max-width:600px) {
-  #header-row > div.col{
-    width: 80% !important;
-    margin-bottom: 1vh;
-    margin-left: 5vw;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #header-row > div.col.Name-Col {
-    display: flex;
-    justify-content: left;
-    font-size: 2vw;
-    float:left;
-  }
-
-  #header-row > div.col.Name-Col > h1 {
-    display: flex;
-    font-size: 4vw;
-    float:left;
-    color: blueviolet;
-  }
-  #header-row > div.col.Name-Col > img.App-Logo{
-    display: flex;
-    height:15vmin;
-    float: left;
-  }
-}
-
-
-
-@media screen and (max-width:480px){
-  #header-row > div.col{
-    width: 80% !important;
-    margin-bottom: 5vh;
-    /* display: flex;
-    justify-content: left;
-    align-items: left; */
-  }
-
-  #header-row > div.col.Name-Col {
-    font-size: 2vw;
-    float:left;
-  }
-
-  #header-row > div.col.Name-Col > h1 {
-    font-size: 2vw;
-    float:left;
-  }
-  #header-row > div.col.Name-Col > img.App-Logo{
-    display: block !important;
-    height:10vmin;
-    float: left;
-  }
 }
 
 div.list-group {
-  display: flex-grid;
+  display: flex;
+  flex-direction: column;
   background-color: black;
   padding: 1rem;
-  /* float:inline-start; */
-  /* width: 30vw; */
-  /* grid-template-columns: 40vw ; */
-  /* background-color: var(--font-color); */
-  /* gap:1rem; */
+  margin-top: auto;
 
 }
 
@@ -221,8 +155,6 @@ div.list-group > div.list-group-item{
 }
 
 div.list-group > div.list-group-item > div{
-  /* border: 0; */
-  /* margin: 1rem; */
   background-color:cadetblue;
   color:var(--background-color);
   align-items: center;
@@ -232,4 +164,115 @@ div.list-group > div.list-group-item > div{
   width: 80%;
 }
 
+#footer-row {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
 
+
+
+/*************************************************************************************************/
+/***********Phone Screen Layout***************/
+@media screen and (max-width:480px) {
+  *{
+    font-size: 1rem;
+    overflow: auto;
+  }
+
+  .container {
+    padding: .5rem;
+  }
+
+  #header-row {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+    width: 94vw;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #header-row > div.Name-Col {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 40%;
+    margin-right: auto;
+    margin-left: 0;
+
+  }
+
+  #header-row > div.Name-Col > h1{
+    font-size: 1.3rem;
+  }
+
+  #header-row > div.Search-Col {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 25%;
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: 0;
+  }
+
+  #header-row > div.Profile-Col {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 20%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  #body-row {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+  }
+
+  #body-row > div.nav-col {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    width: 100%;
+    margin-top:0rem;
+  }
+
+  #body-row > div.nav-col > nav {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+  } 
+
+  #body-row > div.nav-col > nav > div.list-group{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex-direction: row;
+    background-color: var(--background-color);
+    padding: 0;
+  }
+
+  div.list-group > div.list-group-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+  }
+
+  #body-row > div.content-col {
+    display: flex;  
+    flex-direction: column;
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+}
+/**************************/
+/*************************************************************************************************/

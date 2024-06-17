@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 class AddCyberForm extends Component {
     constructor(props) {
@@ -25,15 +25,17 @@ class AddCyberForm extends Component {
     submit(entry) {
         entry.preventDefault();
         console.log(entry)
-        this.setState({submitted:true})
         fetch("https://easybima-backend.onrender.com/apis/cybers/",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(this.state.newcyber),           
+            body: JSON.stringify(this.state.newcyber),          
         })
-        .then((response) => response.json())
+        .then((response) => {
+            response.json();
+            this.setState({submitted:true});
+        })
         .then((reply) => console.log(reply))
         .catch((error) =>console.log(error))
 
@@ -42,6 +44,15 @@ class AddCyberForm extends Component {
     render() {
         return (
             <Fragment>
+
+                <div className="leave-form-button">
+                    <Link to={"/cybers"}>
+                        <button >
+                            Back
+                        </button>
+                    </Link>
+                </div>
+
                 <div className='add-cyber-form'>
                     <form onSubmit={(entry) => this.submit(entry)}>
                         <label htmlFor="cyber_name"> Cyber Name : </label>

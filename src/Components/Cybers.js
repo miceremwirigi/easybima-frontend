@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useEffect, useState } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import Loader from './Loader';
 
@@ -19,7 +19,7 @@ export default class Cybers extends Component {
         constructor(props) {
         super(props);
         this.handleCybersChange = this.handleCybersChange.bind(this);
-        this.handleLoadingState = this.handleLoadingState.bind(this)
+        this.setLoadingState = this.setLoadingState.bind(this)
         this.dummyCybers = []
     }
 
@@ -27,9 +27,11 @@ export default class Cybers extends Component {
         this.props.handleCybersChange(cybers);
     }
 
-    handleLoadingState (isLoadingData) {
-        this.props.handleLoadingState(isLoadingData);
+    setLoadingState (value) {
+        this.props.setLoadingState(value);
     }
+
+    
 
     dummyCybers =  [
                     {cyber_name: "cyber1", area:"Juja", owner_name:"Lilian", owner_phone_number:"0745852367"},
@@ -39,29 +41,28 @@ export default class Cybers extends Component {
                 ]
 
     fetchCybers = () => {
-        this.handleLoadingState(true);        
-        console.log(this.props.isLoadingData);
-        const jsonDataResponse = fetch("https://easybima-backend.onrender.com/apis/cybers/")
+        this.setLoadingState(true);  
+        fetch("https://easybima-backend.onrender.com/apis/cybers/")
         .then(response => {
             response.json()
             .then(json => {
-            this.handleCybersChange(json.data);                    
-            console.log(json) 
-        })
-        })
-        
+                this.handleCybersChange(json.data);                    
+                console.log(json)              
+                this.setLoadingState(false);  
+                console.log("4: set state when fetching data to: "+ this.props.isLoadingData)
+            })
+        })        
         .catch((error) => {
                 console.log(error);
                 window.alert(error);
             }
         )               
-        this.handleLoadingState(false);    
     }
 
     componentDidMount() {
         // this.handleCybersChange(            
         //          dummyCybers            
-        // )        
+        // )      
         this.fetchCybers();
     }
 

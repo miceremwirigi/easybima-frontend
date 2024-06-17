@@ -23,7 +23,7 @@ class App extends Component {
     this.state = {customers: []};
     this.state = {staff: []};
     this.handleCybersChange = this.handleCybersChange.bind(this);
-    this.handleLoadingState = this.handleLoadingState.bind(this);
+    this.setLoadingState = this.setLoadingState.bind(this);
     this.handleCustomersChange = this.handleCustomersChange.bind(this);
     this.handleStaffChange = this.handleStaffChange.bind(this);
     // this.handleCyberFormData = this.handleCyberFormData.bind(this)
@@ -36,9 +36,9 @@ class App extends Component {
     )
   }
 
-  handleLoadingState(isLoadingData){
+  setLoadingState(value){
     this.setState({
-      isLoadingData: isLoadingData,
+      isLoadingData: value,
     },
     () => console.log("Loading = ", this.state.isLoadingData)
   )
@@ -61,21 +61,24 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='container'>
+
           <div className='row mt-3' id='header-row'>
-            <div className='col Name-Col ms-3'>
+            <div className='Name-Col ms-3'>
               <img src={logo2} className='App-Logo' alt='logo'/>
               <h1>Geotech</h1>            
             </div>
-            <div className='col Search-Col ms-3'>
+            <div className='Search-Col ms-3'>
               <div className='Search-Bar'>
                 <input type='text' placeholder='Search..'></input>
               </div>
             </div>
-            <div className='col Profile-Col ms-3'>
+            <div className='Profile-Col ms-3'>
               <h3 >Profile</h3>
             </div>
           </div>
+
           <div className='row mt-5' id='body-row'>
+            
             <div className='nav-col'>
               <nav>
                 <div className='list-group'>
@@ -94,11 +97,6 @@ class App extends Component {
                       <div>Staff</div>
                     </Link>
                   </div>
-                  <div className='list-group-item'>
-                    <Link to={"/staff"}>
-                      <div>Staff</div>
-                    </Link>
-                  </div>
                 </div>
               </nav>
             </div>
@@ -106,7 +104,7 @@ class App extends Component {
             <div className='content-col'>
               <Routes>
               {/* <Route path='/cybers' element={this.state.isLoadingData ? <Loader /> : <Cybers cybers={this.state.cybers} isLoadingData={this.props.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route> */}
-              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange} handleLoadingState={this.handleLoadingState} />}></Route>
+              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange} setLoadingState={this.setLoadingState} />}></Route>
                 <Route path='/cybers/add' element={<AddCyberForm />}></Route>
                 <Route path='/customers' element={<Customers customers={this.state.customers} handleCustomersChange={this.handleCustomersChange}/>}></Route>
                 <Route path='/customers/add' element={<AddCustomerForm />}></Route>
@@ -115,6 +113,9 @@ class App extends Component {
               </Routes>
             </div>
 
+          </div>
+          <div className='row mt-3' id='footer-row'>
+              <p>&copy;Geotech2024 </p>
           </div>
         </div>
       </BrowserRouter>

@@ -1,24 +1,38 @@
+.leave-form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .add-cyber-form {
     display: flex;
-    flex-direction: row;
-    margin: .5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: .5rem;
+    margin-right: .5rem;
     padding: .5rem;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: rgb(2, 7, 32);
-    width: 90%;
+    overflow: auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: scroll;
+    overflow-y: scroll;
 }
 
 label {
     width: max-content;
     margin: .5rem;
     font-weight: 400;
-}
-
-input {
-    display: flex;
-    flex-direction: column;
-    margin: .5rem;
-    height: 1.5rem;
+    font-size: 1.5rem;
 }
 
 .form-submit-btn{
@@ -29,6 +43,8 @@ input {
     border-radius: 2em;
     cursor: pointer;
     font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-submit-btn:hover {
@@ -38,5 +54,34 @@ input {
 .add-cyber-form > form > input {
     background-color: rgb(2, 1, 24);
     color: white;
-    font-weight: 600;
+    height: 2.5rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+@media screen and (max-width: 480px) {
+    *{
+        font-size: 1rem;
+        overflow: auto;
+      }
+
+      form {
+        width: 90%;
+      }
+
+    label {
+        width: max-content;
+        margin: .3rem;
+        font-weight: 400;
+        font-size: 1rem;
+    }
+
+
+    .add-cyber-form > form > input {
+        height: 2rem;
+        font-weight: 400;
+        font-size: 1rem;
+        margin: .2rem;
+    }
 }
