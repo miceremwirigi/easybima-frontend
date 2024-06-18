@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 class AddStaffForm extends Component {
     constructor(props) {
@@ -19,12 +19,10 @@ class AddStaffForm extends Component {
         const addedstaff = {...this.state.newstaff}
         addedstaff[entry.target.id] = entry.target.value
         this.setState({newstaff: addedstaff})
-        console.log(addedstaff)
     }
 
     submit(entry) {
         entry.preventDefault();
-        console.log(entry)
         this.setState({submitted:true})
         fetch("/apis/staff",{
             method: "POST",
@@ -35,13 +33,25 @@ class AddStaffForm extends Component {
         })
         .then((response) => response.json())
         .then((reply) => console.log(reply))
-        .catch((error) =>console.log(error))
+        .catch((error) => {
+            window.alert(error)
+            console.log(error)
+        })
 
     }
 
     render() {
         return (
             <Fragment>
+                <div className="leave-form-button">
+                    <Link to={"/staff"}>
+                        <button >
+                            Back
+                        </button>
+                    </Link>
+                </div>
+
+
                 <div className='add-staff-form'>
                     <form onSubmit={(entry) => this.submit(entry)}>
                         <label htmlFor="staff_name"> Staff Name : </label>

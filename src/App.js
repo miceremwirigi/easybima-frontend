@@ -2,17 +2,24 @@ import logo from './logo.svg';
 import logo2 from './logo192.svg';
 import { Component } from 'react';
 import { Link, Route, Router, Routes, BrowserRouter } from 'react-router-dom';
+import Home from './Components/Home';
 import Cybers from './Components/Cybers'
 import Customers from './Components/Customers'
 import Staff from './Components/Staff'
+import Policies from './Components/Policies';
 import AddCyberForm from './Components/AddCyberForm';
 import AddCustomerForm from './Components/AddCustomerForm';
 import AddStaffForm from './Components/AddStaffForm';
+import AddPolicyForm from './Components/AddPolicyForm';
 import './App.css';
 import './Components/Cybers.css';
-import './Components/Customers.css'
-import './Components/Staff.css'
 import './Components/AddCyberForm.css';
+import './Components/Customers.css'
+import './Components/AddCustomerForm.css';
+import './Components/Staff.css'
+import './Components/AddStaffForm.css'
+import './Components/Policies.css'
+import './Components/AddPolicyForm.css'
 
 class App extends Component {
   constructor(props) {
@@ -21,10 +28,12 @@ class App extends Component {
     this.state = {isLoadingData: false};
     this.state = {newcybers:[]};
     this.state = {customers: []};
+    this.state = {policies: []};
     this.state = {staff: []};
     this.handleCybersChange = this.handleCybersChange.bind(this);
     this.setLoadingState = this.setLoadingState.bind(this);
     this.handleCustomersChange = this.handleCustomersChange.bind(this);
+    this.handlePoliciesChange = this.handlePoliciesChange.bind(this);
     this.handleStaffChange = this.handleStaffChange.bind(this);
     // this.handleCyberFormData = this.handleCyberFormData.bind(this)
   }
@@ -52,6 +61,10 @@ class App extends Component {
     this.setState({customers: customers})
   }
 
+  handlePoliciesChange(policies){
+    this.setState({policies: policies})
+  }
+
   handleStaffChange(staff){
     this.setState({staff: staff})
   }
@@ -63,10 +76,12 @@ class App extends Component {
         <div className='container'>
 
           <div className='row mt-3' id='header-row'>
+            <Link to={"/"}>
             <div className='Name-Col ms-3'>
               <img src={logo2} className='App-Logo' alt='logo'/>
               <h1>Geotech</h1>            
             </div>
+            </Link>
             <div className='Search-Col ms-3'>
               <div className='Search-Bar'>
                 <input type='text' placeholder='Search..'></input>
@@ -97,19 +112,26 @@ class App extends Component {
                       <div>Staff</div>
                     </Link>
                   </div>
+                  <div className='list-group-item'>
+                    <Link to={"/policies"}>
+                      <div>Policies</div>
+                    </Link>
+                  </div>
                 </div>
               </nav>
             </div>
 
             <div className='content-col'>
               <Routes>
-              {/* <Route path='/cybers' element={this.state.isLoadingData ? <Loader /> : <Cybers cybers={this.state.cybers} isLoadingData={this.props.isLoadingData} handleCybersChange={this.handleCybersChange}/>}></Route> */}
-              <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange} setLoadingState={this.setLoadingState} />}></Route>
+                <Route path='/' element={<Home />}></Route>
+                <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange} setLoadingState={this.setLoadingState} />}></Route>
                 <Route path='/cybers/add' element={<AddCyberForm />}></Route>
-                <Route path='/customers' element={<Customers customers={this.state.customers} handleCustomersChange={this.handleCustomersChange}/>}></Route>
+                <Route path='/customers' element={<Customers customers={this.state.customers} isLoadingData={this.state.isLoadingData}  handleCustomersChange={this.handleCustomersChange}  setLoadingState={this.setLoadingState} />}></Route>
                 <Route path='/customers/add' element={<AddCustomerForm />}></Route>
                 <Route path='/staff' element={<Staff staff={this.state.staff} handleStaffChange={this.handleStaffChange}/>}></Route>
                 <Route path='/staff/add' element={<AddStaffForm />}></Route>
+                <Route path='/policies' element={<Policies policies={this.state.policies}  isLoadingData={this.state.isLoadingData} handlePoliciesChange={this.handlePoliciesChange} setLoadingState={this.setLoadingState} />}></Route>
+                <Route path='/policies/add' element={<AddPolicyForm />}></Route>
               </Routes>
             </div>
 

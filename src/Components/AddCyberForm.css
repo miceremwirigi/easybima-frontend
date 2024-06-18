@@ -1,14 +1,21 @@
 .leave-form-button {
     display: flex;
+    position: sticky;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: auto;
+    margin-right: 10%;
     margin-left: auto;
 }
 
+
+
+form::-webkit-scrollbar {
+    display: none;
+  }
+
 .add-cyber-form {
     display: flex;
-    margin-top: auto;
     margin-bottom: auto;
     margin-left: .5rem;
     margin-right: .5rem;
@@ -24,7 +31,7 @@ form {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
     overflow-y: scroll;
 }
 
@@ -45,25 +52,30 @@ label {
     font-size: 1.2rem;
     align-items: center;
     justify-content: center;
+    background-color: rgba(5, 127, 158, 0.87);
 }
 
 .form-submit-btn:hover {
-    background-color: rgb(192, 165, 236);
+    background-color: rgb(21, 4, 46);
 }
 
-.add-cyber-form > form > input {
+form > input {
     background-color: rgb(2, 1, 24);
     color: white;
-    height: 2.5rem;
-    font-weight: 400;
+    height: 2rem;
+    font-weight: 350;
     font-size: 1.5rem;
-    margin: 1rem;
+    margin: .5rem;
 }
 
 @media screen and (max-width: 480px) {
     *{
         font-size: 1rem;
         overflow: auto;
+      }
+
+      .leave-form-button {
+        margin-top: 0;
       }
 
       form {
@@ -73,15 +85,17 @@ label {
     label {
         width: max-content;
         margin: .3rem;
+        margin-left: 1rem;
         font-weight: 400;
         font-size: 1rem;
     }
 
 
-    .add-cyber-form > form > input {
-        height: 2rem;
+    form > input {
+        height: 2.5rem;
         font-weight: 400;
-        font-size: 1rem;
-        margin: .2rem;
+        font-size: 1.2rem;
+        margin: .3rem;
+        margin-left: 1rem;
     }
 }

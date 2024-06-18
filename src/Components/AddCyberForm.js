@@ -19,12 +19,10 @@ class AddCyberForm extends Component {
         const addedcyber = {...this.state.newcyber}
         addedcyber[entry.target.id] = entry.target.value
         this.setState({newcyber: addedcyber})
-        console.log(addedcyber)
     }
 
     submit(entry) {
         entry.preventDefault();
-        console.log(entry)
         fetch("https://easybima-backend.onrender.com/apis/cybers/",{
             method: "POST",
             headers: {
@@ -37,7 +35,10 @@ class AddCyberForm extends Component {
             this.setState({submitted:true});
         })
         .then((reply) => console.log(reply))
-        .catch((error) =>console.log(error))
+        .catch((error) =>{
+            window.alert(error)
+            console.log(error)
+        })
 
     }
 

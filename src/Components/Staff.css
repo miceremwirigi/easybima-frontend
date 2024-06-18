@@ -1,0 +1,7 @@
+.add-staff-button {
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: 10%;
+    margin-top: 0;
+}
