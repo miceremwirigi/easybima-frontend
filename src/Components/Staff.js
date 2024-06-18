@@ -1,5 +1,6 @@
 import React, { Component, Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from './Loader';
 
 export default class Staff extends Component {
     constructor(props) {
@@ -25,6 +26,13 @@ handleStaffChange(staff) {
     render (){
         return(
             <Fragment>
+
+                {
+                    this.props.isLoadingData ? <Loader /> :
+                     
+                <>
+
+                
                 <div className="add-staff-button">
                     <Link to={"/staff/add"}>
                         <button >
@@ -33,7 +41,8 @@ handleStaffChange(staff) {
                     </Link>
                 </div>
 
-                <div className='staff-table'>
+                <div className="outer-table-wrapper">
+                <div className='staff-table table-wrapper'>
                 <table>
                 <thead>
                     <tr>
@@ -58,6 +67,10 @@ handleStaffChange(staff) {
                 </tbody>
                 </table>
             </div>
+            </div>
+
+            </>
+            }
         </Fragment>
         );
     }

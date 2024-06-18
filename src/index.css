@@ -25,7 +25,6 @@ code {
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
-  overflow: auto;
   
 }
 
@@ -46,10 +45,15 @@ code {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-basis: 65vh;
+  flex-basis: 75dvh;
   overflow: auto;
   margin-top: 0;
   justify-content: left;
+  
+}
+
+#body-row::-webkit-scrollbar {
+  display: none;
 }
 
 #body-row > div.nav-col {
@@ -67,10 +71,6 @@ code {
   flex-direction: column;
   justify-content: center;
 
-}
-
-* {
-  overflow: auto;
 }
 
 div {
@@ -93,13 +93,13 @@ a {
 }
 
 .mt-3 {
-  margin-top: 3vh;
-  margin-bottom: 3vh;
+  margin-top: 3dvh;
+  margin-bottom: 3dvh;
 }
 
 .mt-5 {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  margin-top: 5dvh;
+  margin-bottom: 5dvh;
 }
 
 div.Name-Col {
@@ -134,9 +134,10 @@ div.Profile-Col {
 div.list-group {
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: rgb(1, 1, 22);
   padding: 1rem;
   margin-top: auto;
+  margin-bottom: auto;
 
 }
 
@@ -170,7 +171,7 @@ div.list-group > div.list-group-item > div{
   height: max-content;
   align-items: center;
   justify-content: center;
-  margin-top: 0;
+  margin: 0;
 }
 
 
@@ -254,16 +255,18 @@ div.list-group > div.list-group-item > div{
     flex-basis: 100%;
     flex-direction: row;
     background-color: var(--background-color);
-    padding: 0;
+    padding: 1rem;
   }
 
   div.list-group > div.list-group-item {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: fit-content;
-    height: fit-content;
+    min-width: fit-content;
+    min-height: fit-content;
+    background-color: rgb(1, 1, 29);
     margin: auto;
+    border-radius: 20%;
   }
 
   #body-row > div.content-col {

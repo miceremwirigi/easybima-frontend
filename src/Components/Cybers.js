@@ -19,7 +19,7 @@ export default class Cybers extends Component {
         constructor(props) {
         super(props);
         this.handleCybersChange = this.handleCybersChange.bind(this);
-        this.setLoadingState = this.setLoadingState.bind(this)
+        this.setLoadingState = this.setLoadingState.bind(this);
         this.dummyCybers = []
     }
 
@@ -42,14 +42,13 @@ export default class Cybers extends Component {
 
     fetchCybers = () => {
         this.setLoadingState(true);  
-        fetch("https://easybima-backend.onrender.com/apis/cybers/")
+        fetch("apis/cybers/")
         .then(response => {
             response.json()
             .then(json => {
                 this.handleCybersChange(json.data);                    
                 console.log(json)              
-                this.setLoadingState(false);  
-                console.log("4: set state when fetching data to: "+ this.props.isLoadingData)
+                this.setLoadingState(false);
             })
         })        
         .catch((error) => {
