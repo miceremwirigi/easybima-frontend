@@ -1,6 +1,6 @@
 import React, { Component, Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import Loader from './Loader';
+import Loader from '../Loader';
 
 export default class Policies extends Component {
     constructor(props) {

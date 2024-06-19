@@ -3,38 +3,51 @@ import logo2 from './logo192.svg';
 import { Component } from 'react';
 import { Link, Route, Router, Routes, BrowserRouter } from 'react-router-dom';
 import Home from './Components/Home';
-import Cybers from './Components/Cybers'
-import Customers from './Components/Customers'
-import Staff from './Components/Staff'
-import Policies from './Components/Policies';
-import AddCyberForm from './Components/AddCyberForm';
-import AddCustomerForm from './Components/AddCustomerForm';
-import AddStaffForm from './Components/AddStaffForm';
-import AddPolicyForm from './Components/AddPolicyForm';
+import Cybers from './Components/Cybers/Cybers'
+import Customers from './Components/Customers/Customers'
+import Staff from './Components/Staff/Staff'
+import Policies from './Components/Policies/Policies';
+import AddCyberForm from './Components/Cybers/AddCyberForm';
+import AddCustomerForm from './Components/Customers/AddCustomerForm';
+import AddStaffForm from './Components/Staff/AddStaffForm';
+import AddPolicyForm from './Components/Policies/AddPolicyForm';
 import './App.css';
-import './Components/Cybers.css';
-import './Components/AddCyberForm.css';
-import './Components/Customers.css'
-import './Components/AddCustomerForm.css';
-import './Components/Staff.css'
-import './Components/AddStaffForm.css'
-import './Components/Policies.css'
-import './Components/AddPolicyForm.css'
+import './Components/Cybers/Cybers.css';
+import './Components/Cybers/AddCyberForm.css';
+import './Components/Customers/Customers.css'
+import './Components/Customers/AddCustomerForm.css';
+import './Components/Staff/Staff.css'
+import './Components/Staff/AddStaffForm.css'
+import './Components/Policies/Policies.css'
+import './Components/Policies/AddPolicyForm.css'
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {cybers:[]};
-    this.state = {isLoadingData: false};
-    this.state = {newcybers:[]};
-    this.state = {customers: []};
-    this.state = {policies: []};
-    this.state = {staff: []};
+    this.state = {
+      cybers:[],
+      newcybers:[],
+      customers:[],
+      staff: [],
+      isLoadingData: false,
+      policies: [],
+      newpolicy:{
+        policy_number: "",
+        type: "",
+        issued_at:"",
+        expires_at:"",
+        owner_id: "",
+        item_identifier: ""
+      },         
+};
+    
     this.handleCybersChange = this.handleCybersChange.bind(this);
     this.setLoadingState = this.setLoadingState.bind(this);
     this.handleCustomersChange = this.handleCustomersChange.bind(this);
     this.handlePoliciesChange = this.handlePoliciesChange.bind(this);
+    this.handlePolicyFormData = this.handlePolicyFormData.bind(this)
     this.handleStaffChange = this.handleStaffChange.bind(this);
+    this.handleNewPolicyState = this.handleNewPolicyState.bind(this);
     // this.handleCyberFormData = this.handleCyberFormData.bind(this)
   }
 
@@ -49,7 +62,7 @@ class App extends Component {
     this.setState({
       isLoadingData: value,
     },
-    () => console.log("Loading = ", this.state.isLoadingData)
+    () => console.log("Loading = ", this.state.policies)
   )
   }
 
@@ -63,6 +76,20 @@ class App extends Component {
 
   handlePoliciesChange(policies){
     this.setState({policies: policies})
+  }
+
+
+  // Retreives values from form entries
+  // as they are types and updates new policy state  
+  handlePolicyFormData(formEntry) {
+    const addedpolicy = {...this.state.newpolicy}
+    addedpolicy[formEntry.target.id] = formEntry.target.value
+    this.handleNewPolicyState(addedpolicy);
+  }
+
+  // Sets state of newpolicy in parent from a passed policy object
+  handleNewPolicyState(addedpolicy){
+    this.setState({newpolicy: addedpolicy});
   }
 
   handleStaffChange(staff){
@@ -123,15 +150,71 @@ class App extends Component {
 
             <div className='content-col'>
               <Routes>
-                <Route path='/' element={<Home />}></Route>
-                <Route path='/cybers' element={<Cybers cybers={this.state.cybers} isLoadingData={this.state.isLoadingData} handleCybersChange={this.handleCybersChange} setLoadingState={this.setLoadingState} />}></Route>
-                <Route path='/cybers/add' element={<AddCyberForm />}></Route>
-                <Route path='/customers' element={<Customers customers={this.state.customers} isLoadingData={this.state.isLoadingData}  handleCustomersChange={this.handleCustomersChange}  setLoadingState={this.setLoadingState} />}></Route>
-                <Route path='/customers/add' element={<AddCustomerForm />}></Route>
-                <Route path='/staff' element={<Staff staff={this.state.staff} handleStaffChange={this.handleStaffChange}/>}></Route>
-                <Route path='/staff/add' element={<AddStaffForm />}></Route>
-                <Route path='/policies' element={<Policies policies={this.state.policies}  isLoadingData={this.state.isLoadingData} handlePoliciesChange={this.handlePoliciesChange} setLoadingState={this.setLoadingState} />}></Route>
-                <Route path='/policies/add' element={<AddPolicyForm />}></Route>
+
+                <Route path='/' element={<Home />}>
+                </Route>
+
+                <Route 
+                  path='/cybers' 
+                  element={<Cybers cybers={this.state.cybers}
+                  isLoadingData={this.state.isLoadingData} 
+                  handleCybersChange={this.handleCybersChange} 
+                  setLoadingState={this.setLoadingState} />}>
+                </Route>
+
+                <Route 
+                  path='/cybers/add' 
+                  element={<AddCyberForm />}>                  
+                </Route>
+
+                <Route 
+                  path='/customers' 
+                  element={<Customers 
+                    customers={this.state.customers}
+                    isLoadingData={this.state.isLoadingData} 
+                    handleCustomersChange={this.handleCustomersChange} 
+                    setLoadingState={this.setLoadingState} />}
+                  >
+                </Route>
+
+                <Route 
+                  path='/customers/add'
+                  element={<AddCustomerForm
+                    newpolicy={this.state.newpolicy}
+                    handleNewPolicyState={this.handleNewPolicyState}
+                    handlePolicyFormData={this.handlePolicyFormData} />}
+                  >
+                </Route>
+
+                <Route
+                  path='/staff'
+                  element={<Staff staff={this.state.staff}
+                  handleStaffChange={this.handleStaffChange}/>}>
+                </Route>
+
+                <Route
+                  path='/staff/add'
+                  element={<AddStaffForm />}>
+                </Route>
+
+                <Route
+                  path='/policies'
+                  element={<Policies
+                  policies={this.state.policies}
+                  isLoadingData={this.state.isLoadingData}
+                  handlePoliciesChange={this.handlePoliciesChange}
+                  setLoadingState={this.setLoadingState} />}>
+                </Route>
+
+                <Route
+                  path='/policies/add'
+                  element={<AddPolicyForm
+                  newpolicy={this.state.newpolicy}
+                  handleNewPolicyState={this.handleNewPolicyState}
+                  handlePolicyFormData={this.handlePolicyFormData} /> }
+                  >
+                </Route>
+                
               </Routes>
             </div>
 
