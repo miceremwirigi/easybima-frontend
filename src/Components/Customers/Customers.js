@@ -84,51 +84,72 @@ fetchCustomers = () => {
     render (){
         return(
             <Fragment>
-                <div className="add-customer-button">
-                    <Link to={"/customers/add"}>
-                        <button >
-                            Add Customer
-                        </button>
-                    </Link>
-                </div>
-
+                
                 {
                     this.props.isLoadingData ? <Loader /> :
                      
                 <>
-                
-                <div className="outer-table-wrapper">
-                <div className='customers-table table-wrapper'>
-                <table>
-                <thead>
-                    <tr>
-                    <th>Name</th>
-                    <th>ID No.</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>Policies</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {  
-                        this.props.customers?.map((customer) => (
-                            <tr key={customer.national_id}>
-                                <td>{customer.first_name + " " + customer.second_name + " " + customer.other_names}</td>
-                                <td>{customer.national_id}</td>
-                                <td>{customer.phone_number}</td>
-                                <td>{customer.email}</td>
-                                <td>{customer.policies.length}</td>
+                    <div className="outer-table-wrapper">
+                    <div className='customers-table table-wrapper'>
+                        <table>
+                        <thead>
+                            <tr>
+                            <th>Name</th>
+                            <th>Policies</th>
+                            <th>ID No.</th>
+                            <th>Phone</th>
+                            <th>Email</th>
                             </tr>
-                        )
-                        )
-                    }
-                </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {  
+                                this.props.customers?.map((customer) => ( 
+                                    <tr key={customer.phone_number}>
+                                        <td>
+                                    <Link to={`/customers/${customer.id}`}>
+                                            {customer.first_name + " " + customer.second_name}
+                                    </Link> 
+                                        </td>
+                                        <td>
+                                    <Link to={`/customers/${customer.id}`}>
+                                            {customer.policies.length}
+                                    </Link> 
+                                        </td>  
+                                        <td>
+                                    <Link to={`/customers/${customer.id}`}>
+                                            {customer.national_id}
+                                    </Link> 
+                                        </td>
+                                        <td>
+                                            <a href={"tel:"+customer.phone_number}>
+                                                {customer.phone_number}
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href={"mailto:"+customer.email}>
+                                                {customer.email}
+                                            </a>
+                                        </td>                                  
+                                    </tr>
+
+                                )
+                                )
+                            }
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </>
+            }
+
+            <div className="add-customer-button">
+                <Link to={"/customers/add"}>
+                    <button >
+                        Add Customer
+                    </button>
+                </Link>
             </div>
 
-            </>
-            }
 
         </Fragment>
         );

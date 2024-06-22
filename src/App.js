@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import logo2 from './logo192.svg';
 import { Component } from 'react';
-import { Link, Route, Router, Routes, BrowserRouter } from 'react-router-dom';
+import { Link, Route, Router, Routes, BrowserRouter, useParams } from 'react-router-dom';
 import Home from './Components/Home';
 import Cybers from './Components/Cybers/Cybers'
 import Customers from './Components/Customers/Customers'
@@ -16,10 +16,12 @@ import './Components/Cybers/Cybers.css';
 import './Components/Cybers/AddCyberForm.css';
 import './Components/Customers/Customers.css'
 import './Components/Customers/AddCustomerForm.css';
+import './Components/Customers/CustomerView.css'
 import './Components/Staff/Staff.css'
 import './Components/Staff/AddStaffForm.css'
 import './Components/Policies/Policies.css'
 import './Components/Policies/AddPolicyForm.css'
+import CustomerView from './Components/Customers/CustomerView';
 
 class App extends Component {
   constructor(props) {
@@ -98,6 +100,12 @@ class App extends Component {
 
 
   render() {
+    const CustomerWrapperWithRouter = (props) => {
+      const params = useParams();
+      return (<CustomerView 
+          {...{...props, match: {params}} }
+        />)
+    }
     return (
       <BrowserRouter>
         <div className='container'>
@@ -184,6 +192,14 @@ class App extends Component {
                     handleNewPolicyState={this.handleNewPolicyState}
                     handlePolicyFormData={this.handlePolicyFormData} />}
                   >
+                </Route>
+
+                {/* Route to view one customer */}
+                <Route
+                  path='/customers/:id'
+                  element={<CustomerWrapperWithRouter />}
+                >
+
                 </Route>
 
                 <Route

@@ -22,6 +22,7 @@ class AddCustomerForm extends Component {
                 type: "",
                 issued_at:"",
                 expires_at:"",
+                owner_phone_number:"",
                 owner_id: "",
                 item_identifier: ""
               },
@@ -30,6 +31,7 @@ class AddCustomerForm extends Component {
                 type: "",
                 issued_at:"",
                 expires_at:"",
+                owner_phone_number:"",
                 owner_id: "",
                 item_identifier: ""
                 },
@@ -56,67 +58,66 @@ class AddCustomerForm extends Component {
     handlePolicyFormData(formEntry) {
         const addedpolicy = {...this.state.policy}
         addedpolicy[formEntry.target.id] = formEntry.target.value
+        addedpolicy["owner_id"] = this.state.newcustomer.national_id      
+        addedpolicy["owner_phone_number"] = this.state.newcustomer.phone_number      
         this.setState({policy:addedpolicy})
-
-        const policyToPost = {...this.state.formattedPolicy}
+        
+        const policyToPost = {...this.state.policy}
         if (formEntry.target.id==="issued_at" || formEntry.target.id==="expires_at"){
             console.log(formEntry.target.id , " .... : ",addedpolicy[formEntry.target.id] )
             const dateField = new Date(addedpolicy[formEntry.target.id])
             policyToPost[formEntry.target.id] = dateField.toISOString()
         }else {
             policyToPost[formEntry.target.id] = addedpolicy[formEntry.target.id]
+            policyToPost["owner_id"] = this.state.newcustomer.national_id      
+            policyToPost["owner_phone_number"] = this.state.newcustomer.phone_number  
         }
-        this.setState({formattedPolicy:policyToPost})
+        this.setState({policy:policyToPost})
 
         console.log("Set parent state = ", this.state.policy)
-        console.log("Child to set = ", this.state.formattedPolicy)
+        console.log("Child to set = ", this.state.policy)
     }
 
 
     submit(entry) {
         entry.preventDefault();
 
-        switch (this.state.showPolicyFormFields){
-        case true:
-            
-    
-            fetch("/apis/policies",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(this.state.formattedPolicy),           
-            })
-            .then((response) => response.json())
-            .then((reply) => {
-                console.log(reply);
-            })
-            .catch((error) => {
-                window.alert(error)
-                console.log(error)
-            });
-        default:
-
-            // Submit Customer
-            this.setState({submitted:true});
-            fetch("/apis/customers",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(this.state.newcustomer),           
-            })
-            .then((response) => response.json())
-            .then((reply) => {
-                console.log(reply);
-                this.setState({showPolicyFormFields:false});
-                this.setState({submitted:true})
-            })
-            .catch((error) =>{
-                window.alert(error);
-                console.log(error);
-            })        
-        }
+        // Submit Customer
+        this.setState({submitted:true});
+        fetch("/apis/customers",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state.newcustomer),           
+        })
+        .then((response) => response.json())
+        .then((reply) => {
+            console.log(reply);
+            if (this.state.showPolicyFormFields){
+                fetch("/apis/policies",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(this.state.policy),           
+                })
+                .then((response) => response.json())
+                .then((reply) => {
+                    console.log(reply);
+                    this.setState({showPolicyFormFields:false});
+                })
+                .catch((error) => {
+                    window.alert(error)
+                    console.log(error)
+                });                   
+            }
+            this.setState({submitted:true})
+        })
+        .catch((error) =>{
+            window.alert(error);
+            console.log(error);
+        }) 
     }
 
     render() {
@@ -142,7 +143,7 @@ class AddCustomerForm extends Component {
                         <input onChange={(entry) => this.handleCustomerFormData(entry)} id='other_names' value={this.state.newcustomer.other_names} placeholder="other names" type='text'></input>
                         <br />
                         <label htmlFor="phone_number"> Phone Number : </label>
-                        <input onChange={(entry) => this.handleCustomerFormData(entry)} id='phone_number' value={this.state.newcustomer.phone_number} placeholder="+254712345678" type='tel'></input>
+                        <input onChange={(entry) => this.handleCustomerFormData(entry)} id='phone_number' required value={this.state.newcustomer.phone_number} placeholder="+254712345678" type='tel'></input>
                         <br />
                         <label htmlFor="secondary_phone_number"> Secondary Phone Number : </label>
                         <input onChange={(entry) => this.handleCustomerFormData(entry)} id='secondary_phone_number' value={this.state.newcustomer.secondary_phone_number} placeholder="+254712345678" type='tel'></input>

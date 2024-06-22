@@ -28,18 +28,8 @@ handleStaffChange(staff) {
             <Fragment>
 
                 {
-                    this.props.isLoadingData ? <Loader /> :
-                     
+                    this.props.isLoadingData ? <Loader /> :                     
                 <>
-
-                
-                <div className="add-staff-button">
-                    <Link to={"/staff/add"}>
-                        <button >
-                            Add Staff
-                        </button>
-                    </Link>
-                </div>
 
                 <div className="outer-table-wrapper">
                 <div className='staff-table table-wrapper'>
@@ -71,6 +61,16 @@ handleStaffChange(staff) {
 
             </>
             }
+
+                            
+            <div className="add-staff-button">
+                <Link to={"/staff/add"}>
+                    <button >
+                        Add Staff
+                    </button>
+                </Link>
+            </div>
+
         </Fragment>
         );
     }

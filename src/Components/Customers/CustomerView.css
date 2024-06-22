@@ -1,0 +1,186 @@
+.leave-view-button {
+    display: flex;
+    justify-content: center;
+    margin-right: 2rem;
+    margin-left: auto;
+    margin-top: 0;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+div.content-col > div.info-card {
+    display: flex;
+    flex-direction: row;
+    /* margin-top: 0;
+    margin-right: 0;
+    margin-left: auto; */
+    width: 67dvw;
+    height: 60dvh;
+    overflow: hidden;
+}
+
+.profile-column{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 0;
+    overflow: auto;
+
+}
+
+.profile-entry {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.profile-entry > h3 {
+    background-color: rgb(1, 1, 23);
+    margin-top:0;
+    margin-bottom:1rem;
+}
+
+.profile-entry > div {
+    
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 1rem;
+}
+
+.policies-column{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 60dvh;
+    overflow-y: scroll;
+    margin-right: 0;
+}
+
+.policies-column .policy {
+    overflow: visible;
+}
+
+.policies-column .policy > hr {
+    border: 0.5rem solid white;
+    margin-bottom: 1rem;
+    color: whitesmoke;
+ }
+
+.policy-entry {
+    margin-top: auto;
+    margin-bottom: auto;
+    /* border: 0.5px dashed whitesmoke */
+}
+
+
+.policy > h3 {
+    display: flex;
+    padding-left: 3rem;
+    margin-top: 0;
+    background-color: rgb(1, 1, 23);
+}
+
+.policy-entry > h4 {
+    background-color: rgb(1, 1, 23);
+    margin:auto;
+}
+
+.policy-entry > div {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+dialog {
+    display: flex;
+    flex-direction: column;
+    height: 70dvh;
+    background-color: rgb(1, 1, 23);
+    overflow: hidden;
+}
+
+dialog::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      magenta,
+      rebeccapurple,
+      dodgerblue,
+      green
+    );
+    opacity: 0.50;
+  }
+  
+
+dialog button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 480px)  {
+    .info-card {
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 94%;
+        
+    }
+
+    .profile-column{
+        padding-left: 1rem;
+        width:50% ;
+        overflow: scroll;
+    }
+    .policies-column{
+        padding-left: 1rem;
+        width: 50%;
+        height: 60dvh;
+        overflow: scroll;
+    }
+
+    .leave-view-button {
+        display: flex;
+        justify-content: center;
+        margin-right: 2rem;
+        margin-left: auto;
+        margin-top: 0;
+    }
+
+    div.content-col > div.action-buttons {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .update-button {
+        margin-left: 2rem;
+    }
+
+    .delete-button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    dialog {
+        display: none;
+        flex-direction: column;
+        height: 70dvh;
+        background-color: rgb(1, 1, 23);
+        overflow: scroll;
+    }
+
+    dialog form {
+        display: flex;
+        height: fit-content;
+        flex-shrink: 0;
+        overflow-y: scroll;
+    }
+
+    dialog form label {
+        color: white;
+    }
+
+    dialog button#close-modal {
+        margin-bottom: auto;
+        padding: 0.5rem;
+        overflow: visible;
+    }
+}

@@ -1,0 +1,262 @@
+ 
+  .container {
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 150%;
+    
+  }
+  
+  #header-row {
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    
+  }
+  
+  
+  #body-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 75dvh;
+    overflow: auto;
+    margin-top: 0;
+    justify-content: left;
+    
+  }
+  
+  #body-row::-webkit-scrollbar {
+    display: none;
+  }
+  
+  #body-row > div.nav-col {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 25%;
+    justify-content: center;
+    margin-bottom: auto;
+    margin-top:1rem;
+  }
+  
+  #body-row > div.content-col {
+    flex-basis: 70%;
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+  
+  }
+  
+  div {
+    overflow: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+    color: antiquewhite;
+  }
+  
+  .ms-3 {
+    margin-right: 3vw;
+    margin-left: 3vw;
+  }
+  
+  .ms-5 {
+    margin-right: 5vw;
+    margin-left: 5vw;
+  }
+  
+  .mt-3 {
+    margin-top: 3dvh;
+    margin-bottom: 3dvh;
+  }
+  
+  .mt-5 {
+    margin-top: 5dvh;
+    margin-bottom: 5dvh;
+  }
+  
+  div.Name-Col {
+    display: flex;
+    align-items: left;
+    float: left;
+    margin-right: auto;
+  }
+  
+  div.Name-Col > h1 {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    margin-top: auto;
+  }
+  
+  img.App-Logo{
+    display: block;
+    height:15vmin;
+    float: left;
+  }
+  
+  div.Search-Col {
+    justify-content: center;
+    margin-left: auto;
+  }
+  
+  div.Profile-Col {
+    justify-content: flex-end;
+  }
+  
+  div.list-group {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(1, 1, 22);
+    padding: 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+  
+  }
+  
+  div.list-group > div.list-group-item{
+    width: 20vw;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(3, 11, 49);
+    color:azure;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-radius: 5%;
+    margin: 0.5rem;
+  }
+  
+  div.list-group > div.list-group-item > div{
+    background-color:cadetblue;
+    color:var(--background-color);
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    font-size: 1.5rem;
+    width: 80%;
+  }
+  
+  #footer-row {
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  
+  
+  /*************************************************************************************************/
+  /***********Phone Screen Layout***************/
+  @media screen and (max-width:480px) {
+    *{
+      font-size: 1rem;
+      overflow: auto;
+    }
+  
+    .container {
+      padding: .5rem;
+    }
+  
+    #header-row {
+      display: flex;
+      flex-direction: row;
+      flex-basis: 100%;
+      flex-wrap: wrap;
+      width: 94vw;
+      margin-top: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    #header-row > div.Name-Col {
+      display: flex;
+      flex-direction: row;
+      flex-basis: 40%;
+      margin-right: auto;
+      margin-left: 0;
+  
+    }
+  
+    #header-row > div.Name-Col > h1{
+      font-size: 1.3rem;
+    }
+  
+    #header-row > div.Search-Col {
+      display: flex;
+      flex-direction: row;
+      flex-basis: 25%;
+      margin-left: auto;
+      margin-right: 0;
+      margin-top: 0;
+    }
+  
+    #header-row > div.Profile-Col {
+      display: flex;
+      flex-direction: row;
+      flex-basis: 20%;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  
+    #body-row {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+    }
+  
+    #body-row > div.nav-col {
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+      width: 100%;
+      margin-top:0rem;
+    }
+  
+    #body-row > div.nav-col > nav {
+      display: flex;
+      flex-basis: 100%;
+      flex-direction: column;
+    } 
+  
+    #body-row > div.nav-col > nav > div.list-group{
+      display: flex;
+      flex-direction: column;
+      flex-basis: 100%;
+      flex-direction: row;
+      background-color: var(--background-color);
+      padding: 1rem;
+    }
+  
+    div.list-group > div.list-group-item {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      min-width: fit-content;
+      min-height: fit-content;
+      background-color: rgb(1, 1, 29);
+      margin: auto;
+      border-radius: 20%;
+    }
+  
+    #body-row > div.content-col {
+      display: flex;  
+      flex-direction: column;
+      flex-basis: 100%;
+      width: 100%;
+    }
+  
+  }
+  /**************************/
+  /*************************************************************************************************/
+  

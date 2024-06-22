@@ -1,7 +1,7 @@
 .add-staff-button {
     display: flex;
     justify-content: center;
-    margin-right: auto;
-    margin-left: 10%;
+    margin-right: 0;
+    margin-left: auto;
     margin-top: 0;
 }

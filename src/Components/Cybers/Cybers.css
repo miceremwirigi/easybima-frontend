@@ -1,8 +1,8 @@
 .add-cyber-button {
     display: flex;
     justify-content: center;
-    margin-right: auto;
-    margin-left: 10%;
+    margin-right: 0;
+    margin-left: auto;
     margin-top: 0;
 }
 
@@ -42,7 +42,8 @@ button:hover {
     margin-bottom: auto;
     padding: 10px;
     border-radius: 10px;
-    max-height: 70dvh;
+    max-height: 62dvh;
+    overflow: hidden;
     /* height: fit-content; */
     /* background-color: black; */
 }
@@ -52,15 +53,16 @@ div.table-wrapper {
     width: 100%;
     background-color: rgb(3, 3, 63);
     padding: 5px;
-    max-height: 70dvh;
+    overflow: auto;
+    scrollbar-width: thin;
+    height: 62dvh; 
     border-radius: 10px;
-    overflow: auto
   }
-
 
 table {
     width: 100%;
     border-collapse: collapse;
+    
     /* overflow: hidden; */
   }
 
