@@ -17,6 +17,9 @@ export default function AddPolicy (props){
                 <label htmlFor="expires_at"> Expires At : </label>
                 <input onChange={(entry) => props.handlePolicyFormData(entry)} id='expires_at' value={props.policy.expires_at} placeholder="yyyy-MM-dd'T'HH:mm:ss. SSSXXX" type='date'></input>
                 <br />
+                <label htmlFor="owner_phone_number"> Owner's Phone Number : </label>
+                <input onChange={(entry) => props.handlePolicyFormData(entry)} id='owner_phone_number' value={props.policy.owner_phone_number} placeholder="owner's phone number" type='text'></input>
+                <br />
                 <label htmlFor="owner_id"> Owner's ID Number : </label>
                 <input onChange={(entry) => props.handlePolicyFormData(entry)} id='owner_id' value={props.policy.owner_id} placeholder="national id" type='text'></input>
                 <br />

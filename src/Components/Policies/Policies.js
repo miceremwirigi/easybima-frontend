@@ -17,6 +17,26 @@ setLoadingState (value) {
     this.props.setLoadingState(value);
 }
 
+getNumberofDaysToExpiry(policy) {
+    let presentDate = new Date()
+    let expiryDate = new Date(policy.expires_at)
+    let oneDay = 24 * 60 * 60 * 1000
+
+    let daysToExpiry = Math.round((expiryDate - presentDate)/oneDay)
+
+    return daysToExpiry
+}
+
+getDateinYYYYMMDD(dateString){
+    let date = new Date(dateString)
+    let year = date.toString().split(" ",[4])[3]
+    let month = date.toString().split(" ",[4])[2]
+    let dayDate = date.toString().split(" ",[4])[1]
+    let day = date.toString().split(" ",[4])[0]
+
+    return day + " " + dayDate + " " + month + " " + year
+}
+
 fetchPolicies = () => {
     this.setLoadingState(true);  
     fetch("apis/policies/withcustomers")
@@ -33,7 +53,7 @@ fetchPolicies = () => {
             console.log(error);
             window.alert(error);
         }
-    )               
+    )            
 }
 
     componentDidMount() {
@@ -82,14 +102,6 @@ fetchPolicies = () => {
     render (){
         return(
             <Fragment>
-                <div className="add-policy-button">
-                    <Link to={"/policies/add"}>
-                        <button >
-                            Add Policy
-                        </button>
-                    </Link>
-                </div>
-
                 {
                     this.props.isLoadingData ? <Loader /> :
                      
@@ -100,13 +112,14 @@ fetchPolicies = () => {
                 <table>
                 <thead>
                     <tr>
+                    <th>Owner</th>
+                    <th>Identifier</th>
+                    <th>Expires In</th>
+                    <th>Phone</th>
                     <th>Policy No.</th>
                     <th>Type</th>
-                    <th>Identifier</th>
-                    <th>Owner</th>
-                    <th>Phone</th>
-                    <th>Issued At</th>
-                    <th>Expires At</th>
+                    <th>Started On</th>
+                    <th>Expires On</th>
                     <th>Email</th>
                     </tr>
                 </thead>
@@ -114,13 +127,14 @@ fetchPolicies = () => {
                     {  
                         this.props.policies?.map((policy) => (
                             <tr key={policy.policy_number}>
+                                <td>{policy.first_name + " " + policy.second_name + " " + policy.last_name}</td>
+                                <td>{policy.item_identifier}</td>
+                                <td>{this.getNumberofDaysToExpiry(policy) + " days"}</td>
+                                <td>{policy.phone_number}</td>                             
                                 <td>{policy.policy_number}</td>
                                 <td>{policy.type}</td>
-                                <td>{policy.item_identifier}</td>
-                                <td>{policy.first_name + " " + policy.second_name + " " + policy.other_names}</td>
-                                <td>{policy.phone_number}</td>
-                                <td>{policy.issued_at}</td>
-                                <td>{policy.expires_at}</td>
+                                <td>{this.getDateinYYYYMMDD(policy.issued_at)}</td>
+                                <td>{this.getDateinYYYYMMDD(policy.expires_at)}</td>
                                 <td>{policy.email}</td>
                             </tr>
                         )
@@ -133,6 +147,16 @@ fetchPolicies = () => {
 
             </>
             }
+
+
+            <div className="add-policy-button">
+                <Link to={"/policies/add"}>
+                    <button >
+                        Add Policy
+                    </button>
+                </Link>
+            </div>
+
 
         </Fragment>
         );

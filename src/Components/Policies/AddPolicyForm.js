@@ -15,6 +15,7 @@ class AddPolicyForm extends Component {
                 type: "",
                 issued_at:"",
                 expires_at:"",
+                owner_phone_number:"",
                 owner_id: "",
                 item_identifier: ""
               },
@@ -23,7 +24,8 @@ class AddPolicyForm extends Component {
                   type: "",
                   issued_at:"",
                   expires_at:"",
-                  owner_id: "",
+                    owner_phone_number:"",
+                    owner_id: "",
                   item_identifier: ""
                 },
             

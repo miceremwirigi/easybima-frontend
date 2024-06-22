@@ -68,14 +68,7 @@ export default class Cybers extends Component {
     render (){
         return(
             <Fragment>
-                <div className="add-cyber-button">
-                    <Link to={"/cybers/add"}>
-                        <button >
-                            Add Cyber
-                        </button>
-                    </Link>
-                </div>
-
+                
                 {
                     this.props.isLoadingData ? <Loader /> :
                      
@@ -108,7 +101,16 @@ export default class Cybers extends Component {
                     </div>
                 </div> 
                 </>
-                }               
+                }
+
+                <div className="add-cyber-button">
+                    <Link to={"/cybers/add"}>
+                        <button >
+                            Add Cyber
+                        </button>
+                    </Link>
+                </div>
+           
                 
             </Fragment>
         );
