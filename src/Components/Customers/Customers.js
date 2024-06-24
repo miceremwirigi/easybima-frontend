@@ -94,6 +94,7 @@ fetchCustomers = () => {
                         <table>
                         <thead>
                             <tr>
+                            <th></th>
                             <th>Name</th>
                             <th>Policies</th>
                             <th>ID No.</th>
@@ -103,8 +104,14 @@ fetchCustomers = () => {
                         </thead>
                         <tbody>
                             {  
-                                this.props.customers?.map((customer) => ( 
+                                this.props.customers?.map((customer, index) => ( 
+            
                                     <tr key={customer.phone_number}>
+                                        <td>
+                                    <Link to={`/customers/${customer.id}`}>
+                                            {index+1}.
+                                    </Link> 
+                                        </td>
                                         <td>
                                     <Link to={`/customers/${customer.id}`}>
                                             {customer.first_name + " " + customer.second_name}

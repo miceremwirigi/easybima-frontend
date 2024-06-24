@@ -61,8 +61,9 @@ class AddCustomerForm extends Component {
         addedpolicy["owner_id"] = this.state.newcustomer.national_id      
         addedpolicy["owner_phone_number"] = this.state.newcustomer.phone_number      
         this.setState({policy:addedpolicy})
+        this.setState({formattedPolicy:this.state.policy})
         
-        const policyToPost = {...this.state.policy}
+        const policyToPost = {...this.state.formattedPolicy}
         if (formEntry.target.id==="issued_at" || formEntry.target.id==="expires_at"){
             console.log(formEntry.target.id , " .... : ",addedpolicy[formEntry.target.id] )
             const dateField = new Date(addedpolicy[formEntry.target.id])
@@ -72,10 +73,10 @@ class AddCustomerForm extends Component {
             policyToPost["owner_id"] = this.state.newcustomer.national_id      
             policyToPost["owner_phone_number"] = this.state.newcustomer.phone_number  
         }
-        this.setState({policy:policyToPost})
+        this.setState({formattedPolicy:policyToPost})
 
         console.log("Set parent state = ", this.state.policy)
-        console.log("Child to set = ", this.state.policy)
+        console.log("Child to set = ", this.state.formattedPolicy)
     }
 
 
@@ -100,7 +101,7 @@ class AddCustomerForm extends Component {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify(this.state.policy),           
+                    body: JSON.stringify(this.state.formattedPolicy),           
                 })
                 .then((response) => response.json())
                 .then((reply) => {
