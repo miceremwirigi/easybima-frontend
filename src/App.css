@@ -121,7 +121,7 @@
   
   }
   
-  div.list-group > div.list-group-item{
+  div.list-group > a > div.list-group-item{
     width: 20vw;
     height: 3rem;
     display: flex;
@@ -134,12 +134,24 @@
     border-radius: 5%;
     margin: 0.5rem;
   }
+
+  div.list-group > a > div.list-group-item:hover {
+    background-color: rgb(1, 1, 22);
+  }
+
+  div.list-group > a > div.list-group-item.active {
+    background-color: var(--font-color);
+  }
+
+  div.list-group > a > div.list-group-item.active > div {
+    color:rgb(1, 1, 22);
+  }
   
-  div.list-group > div.list-group-item > div{
-    background-color:cadetblue;
-    color:var(--background-color);
+  div.list-group > a > div.list-group-item > div{
+    color:var(--font-color);
     align-items: center;
     display: flex;
+    flex-grow: 1;
     justify-content: left;
     font-size: 1.5rem;
     width: 80%;
@@ -235,18 +247,29 @@
       flex-basis: 100%;
       flex-direction: row;
       background-color: var(--background-color);
-      padding: 1rem;
+      padding: 0rem;
+      margin-left: auto;
+      margin-right: auto;
     }
   
-    div.list-group > div.list-group-item {
+    div.list-group > a > div.list-group-item {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       min-width: fit-content;
       min-height: fit-content;
       background-color: rgb(1, 1, 29);
-      margin: auto;
       border-radius: 20%;
+      padding: 0rem;
+      margin-left: 0.2rem;
+      margin-right: 0.2rem;
+      overflow: visible;
+    }
+
+    div.list-group > a > div.list-group-item > div{
+      font-size: 1rem;
+      align-items: center;
+      justify-content: center;
     }
   
     #body-row > div.content-col {

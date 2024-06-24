@@ -11,6 +11,11 @@
     flex-direction: row;
 }
 
+.update-button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 div.content-col > div.info-card {
     display: flex;
     flex-direction: row;
@@ -28,7 +33,11 @@ div.content-col > div.info-card {
     width: 50%;
     margin-left: 0;
     overflow: auto;
+    scrollbar-width: thin;
+}
 
+.profile-column > div{
+    overflow: visible;
 }
 
 .profile-entry {
@@ -36,14 +45,16 @@ div.content-col > div.info-card {
     margin-bottom: 0;
 }
 
-.profile-entry > h3 {
+.profile-entry > h3, h4 {
+    font-style: oblique;
+    font-size: 0.8rem;
     background-color: rgb(1, 1, 23);
     margin-top:0;
     margin-bottom:1rem;
 }
 
 .profile-entry > div {
-    
+    font-size: 1.4rem;
     margin-top: 0;
     padding-top: 0;
     padding-bottom: 1rem;
@@ -71,7 +82,6 @@ div.content-col > div.info-card {
 .policy-entry {
     margin-top: auto;
     margin-bottom: auto;
-    /* border: 0.5px dashed whitesmoke */
 }
 
 
@@ -83,11 +93,14 @@ div.content-col > div.info-card {
 }
 
 .policy-entry > h4 {
+    font-style: oblique;
+    font-size: 0.8rem;
     background-color: rgb(1, 1, 23);
     margin:auto;
 }
 
 .policy-entry > div {
+    font-size: 1.3rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
@@ -128,8 +141,16 @@ dialog button {
     .profile-column{
         padding-left: 1rem;
         width:50% ;
-        overflow: scroll;
+        overflow: auto;
     }
+
+
+
+    .profile-column > div{
+        overflow: visible;
+    }
+
+
     .policies-column{
         padding-left: 1rem;
         width: 50%;

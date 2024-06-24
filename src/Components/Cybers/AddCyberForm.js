@@ -6,10 +6,12 @@ class AddCyberForm extends Component {
         super(props)
         // this.handleCyberFormData = this.props.handleCyberFormData.bind(this)
         this.state = {newcyber: {
-                cyber_name: "",
-                area: "",
-                owner_name: "",
-                owner_phone_number: ""
+            cyber_name: "",
+            area: "",
+            street: "",
+            cyber_phone_number: "",
+            owner_phone_number: "",
+            owner_name: "",
             },
             submitted:false,
         }
@@ -23,7 +25,7 @@ class AddCyberForm extends Component {
 
     submit(entry) {
         entry.preventDefault();
-        fetch("https://easybima-backend.onrender.com/apis/cybers/",{
+        fetch("/apis/cybers/",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -39,7 +41,6 @@ class AddCyberForm extends Component {
             window.alert(error)
             console.log(error)
         })
-
     }
 
     render() {
@@ -59,8 +60,14 @@ class AddCyberForm extends Component {
                         <label htmlFor="cyber_name"> Cyber Name : </label>
                         <input onChange={(entry) => this.handleCyberFormData(entry)} id='cyber_name' value={this.state.newcyber.cyber_name} placeholder="cyber name" type='text'></input>
                         <br />
+                        <label htmlFor="cyber_phone_number"> Cyber Phone Number : </label>
+                        <input onChange={(entry) => this.handleCyberFormData(entry)} id='cyber_phone_number' required value={this.state.newcyber.cyber_phone_number} placeholder="+254712345678" type='tel'></input>
+                        <br />
                         <label htmlFor="area"> Cyber Location : </label>
                         <input onChange={(entry) => this.handleCyberFormData(entry)} id='area' value={this.state.newcyber.area} placeholder="location" type='text'></input>
+                        <br />
+                        <label htmlFor="street"> Street : </label>
+                        <input onChange={(entry) => this.handleCyberFormData(entry)} id='street' value={this.state.newcyber.street} placeholder="street" type='text'></input>
                         <br />
                         <label htmlFor="owner_name"> Owner's Name : </label>
                         <input onChange={(entry) => this.handleCyberFormData(entry)} id='owner_name' value={this.state.newcyber.owner_name} placeholder="owner name" type='text'></input>

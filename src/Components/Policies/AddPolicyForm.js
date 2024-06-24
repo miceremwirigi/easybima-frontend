@@ -93,12 +93,9 @@ class AddPolicyForm extends Component {
                 <div className='add-policy-form'>
                     <form onSubmit={(entry) => this.submit(entry)}>
 
-                <AddPolicy 
-                    handlePolicyFormData={this.handlePolicyFormData}
-                    policy={this.state.policy} />
-
-
-                
+                    <AddPolicy 
+                        handlePolicyFormData={this.handlePolicyFormData}
+                        policy={this.state.policy} />                
                         
                     <input className='form-submit-btn' type='submit' value="Submit"></input>
                     </form>

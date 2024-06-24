@@ -78,6 +78,7 @@ export default class Cybers extends Component {
                         <table>
                             <thead>
                                 <tr>
+                                <th></th>
                                 <th>Name</th>
                                 <th>Location</th>
                                 <th>Owner</th>
@@ -86,12 +87,35 @@ export default class Cybers extends Component {
                             </thead>
                             <tbody>
                                 {
-                                    this.props.cybers?.map((cyber) => (
+                                    this.props.cybers?.map((cyber, index) => (
                                         <tr key={cyber.cyber_name}>
-                                            <td>{cyber.cyber_name}</td>
-                                            <td>{cyber.area}</td>
-                                            <td>{cyber.owner_name}</td>
-                                            <td>{cyber.owner_phone_number}</td>
+
+                                            <td>
+                                                <Link to={`/cybers/${cyber.id}`}>
+                                                        {index+1}.
+                                                </Link> 
+                                            </td>
+                                            
+                                            <td>
+                                                <Link to={`/cybers/${cyber.id}`}>
+                                                        {cyber.cyber_name}
+                                                </Link> 
+                                            </td>
+                                            <td>
+                                                <Link to={`/cybers/${cyber.id}`}>
+                                                        {cyber.area}
+                                                </Link> 
+                                            </td>
+                                            <td>
+                                                <Link to={`/cybers/${cyber.id}`}>
+                                                        {cyber.owner_name}
+                                                </Link> 
+                                            </td>
+                                            <td>
+                                                <a href={"tel:"+cyber.cyber_phone_number}>
+                                                    {cyber.cyber_phone_number}
+                                                </a>
+                                            </td>
                                         </tr>
                                     )
                                     )
