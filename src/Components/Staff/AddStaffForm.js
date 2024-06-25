@@ -37,7 +37,6 @@ class AddStaffForm extends Component {
       .then((response) => response.json())
       .then((reply) => console.log(reply))
       .catch((error) => {
-        window.alert(error);
         console.log(error);
       });
   }

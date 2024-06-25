@@ -109,14 +109,12 @@ class AddCustomerForm extends Component {
                     this.setState({showPolicyFormFields:false});
                 })
                 .catch((error) => {
-                    window.alert(error)
                     console.log(error)
                 });                   
             }
             this.setState({submitted:true})
         })
         .catch((error) =>{
-            window.alert(error);
             console.log(error);
         }) 
     }

@@ -70,7 +70,6 @@ class AddPolicyForm extends Component {
             this.setState({submitted:true})
         })
         .catch((error) => {
-            window.alert(error)
             console.log(error)
         })
 

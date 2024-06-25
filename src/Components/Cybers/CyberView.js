@@ -67,7 +67,6 @@ handleUpdateCyberFormData(entry) {
         })
         .catch((error) => {
             console.log(error);
-            window.alert(error);
             }
         )  
     }
@@ -90,7 +89,6 @@ handleUpdateCyberFormData(entry) {
         )
         .catch((error) => {
             console.log(error);
-            window.alert(error);
             }
         )
     }
@@ -130,7 +128,6 @@ handleUpdateCyberFormData(entry) {
             this.setState({submitted:true})
         })
         .catch((error) =>{
-            window.alert(error);
             console.log(error);
         }) 
     }

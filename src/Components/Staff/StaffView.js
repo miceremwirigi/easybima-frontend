@@ -56,7 +56,6 @@ export default class StaffView extends Component {
       })
       .catch((error) => {
         console.log(error);
-        window.alert(error);
       });
   };
 
@@ -76,7 +75,6 @@ export default class StaffView extends Component {
       )
       .catch((error) => {
         console.log(error);
-        window.alert(error);
       });
   };
 
@@ -115,7 +113,6 @@ export default class StaffView extends Component {
         this.setState({ submitted: true });
       })
       .catch((error) => {
-        window.alert(error);
         console.log(error);
       });
   };

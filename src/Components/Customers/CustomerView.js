@@ -143,8 +143,6 @@ export default class CustomerView extends Component {
       .then((response) => {
         if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
-        //   console.log(response.statusText);
-        //   window.alert(response.statusText);
         } else {
           response.json().then((json) => {
             this.setState({ customer: json.data });
@@ -157,7 +155,6 @@ export default class CustomerView extends Component {
       })
       .catch((error) => {
         console.log(error);
-        window.alert(error);
       });
   };
 
@@ -177,7 +174,6 @@ export default class CustomerView extends Component {
       )
       .catch((error) => {
         console.log(error);
-        window.alert(error);
       });
   };
 
@@ -216,7 +212,6 @@ export default class CustomerView extends Component {
         this.setState({ submitted: true });
       })
       .catch((error) => {
-        window.alert(error);
         console.log(error);
       });
 
@@ -234,7 +229,6 @@ export default class CustomerView extends Component {
           this.setState({ showPolicyFormFields: false });
         })
         .catch((error) => {
-          window.alert(error);
           console.log(error);
         });
     }

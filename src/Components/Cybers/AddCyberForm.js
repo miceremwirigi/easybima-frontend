@@ -38,7 +38,6 @@ class AddCyberForm extends Component {
         })
         .then((reply) => console.log(reply))
         .catch((error) =>{
-            window.alert(error)
             console.log(error)
         })
     }

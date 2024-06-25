@@ -53,7 +53,6 @@ export default class Cybers extends Component {
         })        
         .catch((error) => {
                 console.log(error);
-                window.alert(error);
             }
         )               
     }
