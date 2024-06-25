@@ -1,11 +1,16 @@
 .leave-form-button {
     display: flex;
-    position: sticky;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 0;
     margin-right: 10%;
-    margin-left: 100dvh;
+    margin-left: auto;
+}
+
+.leave-form-button > a > button {
+    position: sticky;
+    top: 0;
 }
 
 
@@ -35,11 +40,23 @@ form {
     overflow-y: scroll;
 }
 
+form::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      magenta,
+      rebeccapurple,
+      dodgerblue,
+      green
+    );
+    opacity: 0.50;
+  }
+
 label {
     width: max-content;
     margin: .5rem;
     font-weight: 400;
     font-size: 1.5rem;
+    color: white;
 }
 
 .form-submit-btn{
@@ -88,6 +105,11 @@ form > input {
         margin-left: 1rem;
         font-weight: 400;
         font-size: 1rem;
+        color: white;
+    }
+
+    dialog form label {
+        color: white;
     }
 
 

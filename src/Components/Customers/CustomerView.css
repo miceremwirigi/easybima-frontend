@@ -57,6 +57,7 @@ div.content-col > div.info-card {
     font-size: 1.4rem;
     margin-top: 0;
     padding-top: 0;
+    padding-left: 0.5rem;
     padding-bottom: 1rem;
 }
 
@@ -102,6 +103,7 @@ div.content-col > div.info-card {
 .policy-entry > div {
     font-size: 1.3rem;
     padding-top: 1rem;
+    padding-left: 0.5rem;
     padding-bottom: 1rem;
 }
 

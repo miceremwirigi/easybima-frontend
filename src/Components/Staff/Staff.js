@@ -36,7 +36,6 @@ export default class Staff extends Component {
       })
       .catch((error) => {
         console.log(error);
-        window.alert(error);
       });
   };
 

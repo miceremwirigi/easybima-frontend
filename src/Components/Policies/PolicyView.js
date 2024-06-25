@@ -131,7 +131,6 @@ handlePolicyFormData(formEntry) {
         })
         .catch((error) => {
             console.log(error);
-            window.alert(error);
             }
         )  
     }
@@ -154,7 +153,6 @@ handlePolicyFormData(formEntry) {
         )
         .catch((error) => {
             console.log(error);
-            window.alert(error);
             }
         )
     }
@@ -194,7 +192,6 @@ handlePolicyFormData(formEntry) {
             this.setState({submitted:true})
         })
         .catch((error) =>{
-            window.alert(error);
             console.log(error);
         }) 
     }
