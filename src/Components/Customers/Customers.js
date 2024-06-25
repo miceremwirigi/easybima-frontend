@@ -19,7 +19,7 @@ setLoadingState (value) {
 
 fetchCustomers = () => {
     this.setLoadingState(true);  
-    fetch("apis/customers/")
+    fetch("https://easybima-backend.onrender.com/apis/customers/")
     .then(response => {
         response.json()
         .then(json => {

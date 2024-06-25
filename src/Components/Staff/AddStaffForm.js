@@ -27,7 +27,7 @@ class AddStaffForm extends Component {
   submit(entry) {
     entry.preventDefault();
     this.setState({ submitted: true });
-    fetch("/apis/staffs/", {
+    fetch("https://easybima-backend.onrender.com/apis/staffs/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -25,7 +25,7 @@ class AddCyberForm extends Component {
 
     submit(entry) {
         entry.preventDefault();
-        fetch("/apis/cybers/",{
+        fetch("https://easybima-backend.onrender.com/apis/cybers/",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

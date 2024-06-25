@@ -118,7 +118,7 @@ handlePolicyFormData(formEntry) {
         this.setState({isLoadingData:true});
         const id=this.props.match.params.id; // Rereiving id from url
         
-        fetch("/apis/policies/"+id)
+        fetch("https://easybima-backend.onrender.com/apis/policies/"+id)
         .then(response => 
             response.json()
             .then((json)=>{
@@ -140,7 +140,7 @@ handlePolicyFormData(formEntry) {
         this.setState({isLoadingData:true});
         const id=this.props.match.params.id; // Retreiving id from url
 
-        fetch("/apis/policies/delete/"+id,{
+        fetch("https://easybima-backend.onrender.com/apis/policies/delete/"+id,{
             method: "DELETE",          
         })
         .then(response => 
@@ -179,7 +179,7 @@ handlePolicyFormData(formEntry) {
 
         // Submit Policy
         this.setState({submitted:false});
-        fetch("/apis/policies/update/"+id,{
+        fetch("https://easybima-backend.onrender.com/apis/policies/update/"+id,{
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

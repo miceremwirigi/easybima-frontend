@@ -139,7 +139,7 @@ export default class CustomerView extends Component {
     this.setState({ isLoadingData: true });
     const id = this.props.match.params.id; // Rereiving id from url
 
-    fetch("/apis/customers/" + id)
+    fetch("https://easybima-backend.onrender.com/apis/customers/" + id)
       .then((response) => {
         if (!response.ok) {
             throw new Error(`Error: ${response.statusText}`);
@@ -163,7 +163,7 @@ export default class CustomerView extends Component {
     this.setState({ isLoadingData: true });
     const id = this.props.match.params.id; // Retreiving id from url
 
-    fetch("/apis/customers/delete/" + id, {
+    fetch("https://easybima-backend.onrender.com/apis/customers/delete/" + id, {
       method: "DELETE",
     })
       .then((response) =>
@@ -199,7 +199,7 @@ export default class CustomerView extends Component {
 
     // Submit Customer
     this.setState({ submitted: true });
-    fetch("/apis/customers/update/" + id, {
+    fetch("https://easybima-backend.onrender.com/apis/customers/update/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -216,7 +216,7 @@ export default class CustomerView extends Component {
       });
 
     if (this.state.showPolicyFormFields) {
-      fetch("/apis/policies", {
+      fetch("https://easybima-backend.onrender.com/apis/policies", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

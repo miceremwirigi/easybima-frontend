@@ -42,7 +42,7 @@ export default class Cybers extends Component {
 
     fetchCybers = () => {
         this.setLoadingState(true);  
-        fetch("apis/cybers/")
+        fetch("https://easybima-backend.onrender.com/apis/cybers/")
         .then(response => {
             response.json()
             .then(json => {

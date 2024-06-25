@@ -26,7 +26,7 @@ export default class Staff extends Component {
 
   fetchStaff = () => {
     this.setState({ isLoadingData: true });
-    fetch("apis/staffs/")
+    fetch("https://easybima-backend.onrender.com/apis/staffs/")
       .then((response) => {
         response.json().then((json) => {
           this.handleStaffChange(json.data);

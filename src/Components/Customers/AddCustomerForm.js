@@ -85,7 +85,7 @@ class AddCustomerForm extends Component {
 
         // Submit Customer
         this.setState({submitted:true});
-        fetch("/apis/customers",{
+        fetch("https://easybima-backend.onrender.com/apis/customers",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -96,7 +96,7 @@ class AddCustomerForm extends Component {
         .then((reply) => {
             console.log(reply);
             if (this.state.showPolicyFormFields){
-                fetch("/apis/policies",{
+                fetch("https://easybima-backend.onrender.com/apis/policies",{
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

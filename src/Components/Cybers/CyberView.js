@@ -53,7 +53,7 @@ handleUpdateCyberFormData(entry) {
         this.setState({isLoadingData:true});
         const id=this.props.match.params.id; // Rereiving id from url
         
-        fetch("/apis/cybers/"+id)
+        fetch("https://easybima-backend.onrender.com/apis/cybers/"+id)
         .then(response => 
             response.json()
             .then((json)=>{
@@ -76,7 +76,7 @@ handleUpdateCyberFormData(entry) {
         this.setState({isLoadingData:true});
         const id=this.props.match.params.id; // Retreiving id from url
 
-        fetch("/apis/cybers/delete/"+id,{
+        fetch("https://easybima-backend.onrender.com/apis/cybers/delete/"+id,{
             method: "DELETE",          
         })
         .then(response => 
@@ -115,7 +115,7 @@ handleUpdateCyberFormData(entry) {
 
         // Submit Cyber
         this.setState({submitted:true});
-        fetch("/apis/cybers/update/"+id,{
+        fetch("https://easybima-backend.onrender.com/apis/cybers/update/"+id,{
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
