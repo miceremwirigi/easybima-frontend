@@ -60,6 +60,7 @@ class App extends Component {
         policiesactive: false,
         staffactive: false,
       },
+      isAuthenticated: false,
     };
 
     this.handleCybersChange = this.handleCybersChange.bind(this);
@@ -208,7 +209,9 @@ class App extends Component {
             <div className="nav-col">
               <nav>
                 <div className="list-group">
-                  <Link to={"/customers"}>
+                  { this.state.isAuthenticated &&                    
+                    
+                    <Link to={"/customers"}>
                     <div
                       id="nav-item1"
                       className={
@@ -222,6 +225,7 @@ class App extends Component {
                       <div>Customers</div>
                     </div>
                   </Link>
+                  }
 
                   <Link to={"/cybers"}>
                     <div
@@ -236,7 +240,9 @@ class App extends Component {
                     </div>
                   </Link>
 
-                  <Link to={"/staff"}>
+                  { this.state.isAuthenticated &&
+                    
+                    <Link to={"/staff"}>
                     <div
                       id="nav-item3"
                       className={
@@ -248,8 +254,12 @@ class App extends Component {
                       <div>Staff</div>
                     </div>
                   </Link>
+                  }
 
-                  <Link to={"/policies"}>
+                  { this.state.isAuthenticated &&
+
+
+                    <Link to={"/policies"}>
                     <div
                       id="nav-item4"
                       className={
@@ -261,6 +271,7 @@ class App extends Component {
                       <div>Policies</div>
                     </div>
                   </Link>
+                  }
                 </div>
               </nav>
             </div>
