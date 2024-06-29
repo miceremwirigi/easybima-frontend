@@ -39,7 +39,7 @@ getDateinYYYYMMDD(dateString){
 
 fetchPolicies = () => {
     this.setLoadingState(true);  
-    fetch("https://easybima-backend.onrender.com/apis/policies/withcustomers")
+    fetch("https://apis.bimapap.co.ke/apis/policies/withcustomers")
     .then(response => {
         response.json()
         .then(json => {

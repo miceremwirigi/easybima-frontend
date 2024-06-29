@@ -57,7 +57,7 @@ class AddPolicyForm extends Component {
 
     submit(entry) {
         entry.preventDefault();
-        fetch("https://easybima-backend.onrender.com/apis/policies",{
+        fetch("https://apis.bimapap.co.ke/apis/policies",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

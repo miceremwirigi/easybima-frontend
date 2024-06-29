@@ -44,7 +44,7 @@ export default class StaffView extends Component {
     this.setState({ isLoadingData: true });
     const id = this.props.match.params.id; // Rereiving id from url
 
-    fetch("https://easybima-backend.onrender.com/apis/staffs/" + id)
+    fetch("https://apis.bimapap.co.ke/apis/staffs/" + id)
       .then((response) =>
         response.json().then((json) => {
           this.setState({ staff: json.data });
@@ -64,7 +64,7 @@ export default class StaffView extends Component {
     this.setState({ isLoadingData: true });
     const id = this.props.match.params.id; // Retreiving id from url
 
-    fetch("https://easybima-backend.onrender.com/apis/staffs/delete/" + id, {
+    fetch("https://apis.bimapap.co.ke/apis/staffs/delete/" + id, {
       method: "DELETE",
     })
       .then((response) =>
@@ -100,7 +100,7 @@ export default class StaffView extends Component {
 
     // Submit Staff
     this.setState({ submitted: true });
-    fetch("https://easybima-backend.onrender.com/apis/staffs/update/" + id, {
+    fetch("https://apis.bimapap.co.ke/apis/staffs/update/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
