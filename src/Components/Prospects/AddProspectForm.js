@@ -16,6 +16,17 @@ class AddProspectForm extends Component {
         location: "",
         email: "",
       },
+
+      formattedprospect: {
+        first_name: "",
+        second_name: "",
+        other_names: "",
+        phone_number: "",
+        policy_type:"",
+        expiry_date:"",
+        location: "",
+        email: "",
+      },
       submitted: false,
     };
   }
@@ -24,6 +35,19 @@ class AddProspectForm extends Component {
     const addedprospect = { ...this.state.newprospect };
     addedprospect[entry.target.id] = entry.target.value;
     this.setState({ newprospect: addedprospect });
+
+    const prospectToPost = {...this.state.formattedprospect}
+    if (entry.target.id==="expiry_date" ){
+        console.log(entry.target.id , " .... : ",addedprospect[entry.target.id] )
+        const dateField = new Date(addedprospect[entry.target.id])
+        prospectToPost[entry.target.id] = dateField.toISOString()
+    }else {
+        prospectToPost[entry.target.id] = addedprospect[entry.target.id]
+    }
+    this.setState({formattedprospect:prospectToPost})
+
+    console.log("Set parent state = ", this.state.newprospect)
+    console.log("Child to set = ", this.state.formattedprospect)
   }
 
   submit(entry) {
@@ -33,7 +57,7 @@ class AddProspectForm extends Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state.newprospect),
+      body: JSON.stringify(this.state.formattedprospect),
     })
       .then((response) => response.json())
       .then((reply) => {

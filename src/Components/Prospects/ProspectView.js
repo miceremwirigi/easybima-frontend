@@ -28,6 +28,19 @@ export default class ProspectView extends Component {
         location: "",
         email: "",
       },
+
+
+      formattedprospect: {
+        first_name: "",
+        second_name: "",
+        other_names: "",
+        phone_number: "",
+        policy_type:"",
+        expiry_date:"",
+        location: "",
+        email: "",
+      },
+
       isLoadingData: false,
       submitted: false,
       isdeleted: false,
@@ -41,6 +54,24 @@ export default class ProspectView extends Component {
     addedprospect[entry.target.id] = entry.target.value;
     this.setState({ updatedprospect: addedprospect });
     console.log("Set child state = ", this.state.updatedprospect);
+
+    const prospectToPost = {...this.state.updatedprospect}
+    if (entry.target.id==="expiry_date" ){
+        console.log(entry.target.id , " .... : ",addedprospect[entry.target.id])
+        const dateField = new Date(addedprospect[entry.target.id])
+        prospectToPost[entry.target.id] = dateField.toISOString()
+    }
+        prospectToPost[entry.target.id] = addedprospect[entry.target.id];
+        const expiryDate = new Date(prospectToPost.expiry_date);
+        console.log("Date Before= ", expiryDate)
+        console.log("Clean Date = ", expiryDate.toISOString())
+        prospectToPost.expiry_date = expiryDate.toISOString()
+    
+    
+    this.setState({formattedprospect:prospectToPost})
+
+    console.log("Set parent state = ", this.state.updatedprospect)
+    console.log("Child to set = ", this.state.formattedprospect)
   }
 
   // fetch individual prospect details
@@ -52,7 +83,11 @@ export default class ProspectView extends Component {
       .then((response) =>
         response.json().then((json) => {
           this.setState({ prospect: json.data });
-          this.setState({ updatedprospect: json.data });
+          const temporaryProspect = { ...this.state.prospect }
+          const date = new Date(this.state.prospect.expiry_date)
+          const dateString = date.toISOString().substring(0, 10);// truncates 2024-07-18T07:57:13.877634Z expected format.
+          temporaryProspect.expiry_date = dateString
+          this.setState({ updatedprospect: temporaryProspect });
         })
       )
       .then(() => {
@@ -103,13 +138,12 @@ export default class ProspectView extends Component {
     const id = this.props.match.params.id; // Rereiving id from url
 
     // Submit Prospect
-    this.setState({ submitted: true });
     fetch("https://apis.bimapap.co.ke/apis/prospects/update/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(this.state.updatedprospect),
+      body: JSON.stringify(this.state.formattedprospect),
     })
       .then((response) => response.json())
       .then((reply) => {
@@ -158,7 +192,7 @@ export default class ProspectView extends Component {
                   <br />
                 </div>
                 <div className="profile-entry">
-                  <h3>Phone Number</h3>
+                  <h3>Policy Type</h3>
                   <div className="policy-type">
                     <a href={"tel:" + this.state.prospect.policy_type}>
                       {this.state.prospect.policy_type}
@@ -167,7 +201,7 @@ export default class ProspectView extends Component {
                   <br />
                 </div>
                 <div className="profile-entry">
-                  <h3>Phone Number</h3>
+                  <h3>Expiry Date</h3>
                   <div className="expiry-date">
                     <a href={"tel:" + this.state.prospect.expiry_date}>
                       {this.state.prospect.expiry_date}
@@ -196,7 +230,7 @@ export default class ProspectView extends Component {
 
         <dialog id="modal" stack="true">
           <form onSubmit={(entry) => this.updateProspect(entry)}>
-            <label htmlFor="first_name"> First Name : </label>
+          <label htmlFor="first_name"> First Name : </label>
             <input
               onChange={(entry) => this.handleUpdateProspectFormData(entry)}
               id="first_name"
@@ -223,15 +257,6 @@ export default class ProspectView extends Component {
               type="text"
             ></input>
             <br />
-            <label htmlFor="location"> Prospect Location : </label>
-            <input
-              onChange={(entry) => this.handleUpdateProspectFormData(entry)}
-              id="location"
-              value={this.state.updatedprospect.location}
-              placeholder="location"
-              type="text"
-            ></input>
-            <br />
             <label htmlFor="phone_number"> Phone Number : </label>
             <input
               onChange={(entry) => this.handleUpdateProspectFormData(entry)}
@@ -241,22 +266,32 @@ export default class ProspectView extends Component {
               type="text"
             ></input>
             <br />
-            <label htmlFor="policy-type"> Policy Type : </label>
-            <input
-              onChange={(entry) => this.handleUpdateProspectFormData(entry)}
-              id="policy_type"
-              value={this.state.updatedprospect.policy_type}
-              placeholder="policy type"
-              type="text"
-            ></input>
+            <label htmlFor="policy_type"> Policy Type : </label>
+              <select
+                onChange={(entry) => this.handleUpdateProspectFormData(entry)}
+                name="policy_type" 
+                id="policy_type" value={this.state.updatedprospect.policy_type}
+              >
+                <option value="">--Please choose an option--</option>
+                <option value="comprehensive">Comprehensive</option>
+                <option value="third party">Third Party</option>
+              </select>
             <br />
             <label htmlFor="expiry_date"> Expiry Date : </label>
+                <input 
+                onChange={(entry) => this.handleUpdateProspectFormData(entry)} 
+                id='expiry_date' value={this.state.updatedprospect.expiry_date} 
+                placeholder="yyyy-MM-dd'T'HH:mm:ss. SSSXXX" 
+                type='date'>
+                </input>
+                <br />
+            <label htmlFor="location"> Prospect Location : </label>
             <input
               onChange={(entry) => this.handleUpdateProspectFormData(entry)}
-              id="expiry_date"
-              value={this.state.updatedprospect.expiry_date}
-              placeholder="expiry date"
-              type="date"
+              id="location"
+              value={this.state.updatedprospect.location}
+              placeholder="location"
+              type="text"
             ></input>
             <br />
             <label htmlFor="email"> Email : </label>
