@@ -262,6 +262,8 @@ class App extends Component {
                   </Link>
                   }
 
+                  { this.state.isAuthenticated &&
+
                   <Link to={"/cybers"}>
                     <div
                       id="nav-item2"
@@ -274,7 +276,8 @@ class App extends Component {
                       <div>Cybers</div>
                     </div>
                   </Link>
-
+                  }
+                  
                   { this.state.isAuthenticated &&
                     
                     <Link to={"/staff"}>
