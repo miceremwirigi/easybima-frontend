@@ -78,6 +78,8 @@ export default class ProspectView extends Component {
   fetchProspect = () => {
     this.setState({ isLoadingData: true });
     const id = this.props.match.params.id; // Rereiving id from url
+    var temporaryProspect = { ...this.state.prospect }
+    var date = new Date(this.state.prospect.expiry_date)
 
     fetch("https://apis.bimapap.co.ke/apis/prospects/" + id)
       .then((response) =>
@@ -85,17 +87,21 @@ export default class ProspectView extends Component {
           this.setState({ prospect: json.data });
         })
       )
-      .then(() => {
-        this.setState({ isLoadingData: false });
-        const temporaryProspect = { ...this.state.prospect }
-        const date = new Date(this.state.prospect.expiry_date)
+      .then(() => {temporaryProspect = { ...this.state.prospect }
+        date = new Date(this.state.prospect.expiry_date)
         const dateString = date.toISOString().substring(0, 10); // truncates 2024-07-18T07:57:13.877634Z expected format.
         temporaryProspect.expiry_date = dateString
         this.setState({ updatedprospect: temporaryProspect });
+        this.setState({ isLoadingData: false });
+        
       })
       .catch((error) => {
         console.log(error);
       });
+
+      
+      
+
   };
 
   // delete one prospect
