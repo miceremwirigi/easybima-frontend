@@ -83,15 +83,15 @@ export default class ProspectView extends Component {
       .then((response) =>
         response.json().then((json) => {
           this.setState({ prospect: json.data });
-          const temporaryProspect = { ...this.state.prospect }
-          const date = new Date(this.state.prospect.expiry_date)
-          const dateString = date.toISOString().substring(0, 10);// truncates 2024-07-18T07:57:13.877634Z expected format.
-          temporaryProspect.expiry_date = dateString
-          this.setState({ updatedprospect: temporaryProspect });
         })
       )
       .then(() => {
         this.setState({ isLoadingData: false });
+        const temporaryProspect = { ...this.state.prospect }
+        const date = new Date(this.state.prospect.expiry_date)
+        const dateString = date.toISOString().substring(0, 10); // truncates 2024-07-18T07:57:13.877634Z expected format.
+        temporaryProspect.expiry_date = dateString
+        this.setState({ updatedprospect: temporaryProspect });
       })
       .catch((error) => {
         console.log(error);
