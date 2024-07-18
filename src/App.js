@@ -19,6 +19,9 @@ import CustomerView from "./Components/Customers/CustomerView";
 import Staff from "./Components/Staff/Staff";
 import AddStaffForm from "./Components/Staff/AddStaffForm";
 import StaffView from "./Components/Staff/StaffView";
+import Prospects from "./Components/Prospects/Prospects";
+import ProspectView from "./Components/Prospects/ProspectView";
+import AddProspectsForm from "./Components/Prospects/AddProspectForm";
 import Policies from "./Components/Policies/Policies";
 import PolicyView from "./Components/Policies/PolicyView";
 import AddPolicyForm from "./Components/Policies/AddPolicyForm";
@@ -32,6 +35,9 @@ import "./Components/Customers/CustomerView.css";
 import "./Components/Staff/Staff.css";
 import "./Components/Staff/AddStaffForm.css";
 import "./Components/Staff/StaffView.css";
+import "./Components/Prospects/Prospects.css";
+import "./Components/Prospects/AddProspectForm.css";
+import "./Components/Prospects/ProspectView.css";
 import "./Components/Policies/Policies.css";
 import "./Components/Policies/AddPolicyForm.css";
 import "./Components/Policies/PolicyView.css";
@@ -44,6 +50,7 @@ class App extends Component {
       newcybers: [],
       customers: [],
       staffs: [],
+      prospects: [],
       isLoadingData: false,
       policies: [],
       newpolicy: {
@@ -59,6 +66,7 @@ class App extends Component {
         cybersactive: false,
         policiesactive: false,
         staffactive: false,
+        prospectsactive: false,
       },
       isAuthenticated: false,
     };
@@ -69,11 +77,13 @@ class App extends Component {
     this.handlePoliciesChange = this.handlePoliciesChange.bind(this);
     this.handlePolicyFormData = this.handlePolicyFormData.bind(this);
     this.handleStaffChange = this.handleStaffChange.bind(this);
+    this.handleProspectsChange = this.handleProspectsChange.bind(this);
     this.handleNewPolicyState = this.handleNewPolicyState.bind(this);
     this.handleCustomersActive = this.handleCustomersActive.bind(this);
     this.handleCybersActive = this.handleCybersActive.bind(this);
     this.handlePoliciesActive = this.handlePoliciesActive.bind(this);
     this.handleStaffActive = this.handleStaffActive.bind(this);
+    this.handleProspectsActive = this.handleProspectsActive.bind(this);
   }
 
   handleCybersChange(cybers) {
@@ -120,6 +130,10 @@ class App extends Component {
     this.setState({ staffs: staff });
   }
 
+  handleProspectsChange(prospect) {
+    this.setState({ prospects: prospect });
+  }
+
   handleCustomersActive() {
     this.setState({
       activeclass: {
@@ -127,6 +141,7 @@ class App extends Component {
         cybersactive: false,
         policiesactive: false,
         staffactive: false,
+        prospectsactive: false,
       },
     });
   }
@@ -138,6 +153,7 @@ class App extends Component {
         cybersactive: true,
         policiesactive: false,
         staffactive: false,
+        prospectsactive: false,
       },
     });
   }
@@ -149,6 +165,19 @@ class App extends Component {
         cybersactive: false,
         policiesactive: false,
         staffactive: true,
+        prospectsactive: false,
+      },
+    });
+  }
+
+  handleProspectsActive() {
+    this.setState({
+      activeclass: {
+        customersactive: false,
+        cybersactive: false,
+        policiesactive: false,
+        staffactive: false,
+        prospectsactive: true,
       },
     });
   }
@@ -160,6 +189,7 @@ class App extends Component {
         cybersactive: false,
         policiesactive: true,
         staffactive: false,
+        prospectsactive: false,
       },
     });
   }
@@ -183,6 +213,11 @@ class App extends Component {
     const StaffWrapperWithRouter = (props) => {
       const params = useParams();
       return <StaffView {...{ ...props, match: { params } }} />;
+    };
+
+    const ProspectWrapperWithRouter = (props) => {
+      const params = useParams();
+      return <ProspectView {...{ ...props, match: { params } }} />;
     };
 
     return (
@@ -255,6 +290,19 @@ class App extends Component {
                     </div>
                   </Link>
                   }
+                    
+                    <Link to={"/prospects"}>
+                    <div
+                      id="nav-item3"
+                      className={
+                        "list-group-item" +
+                        (this.state.activeclass.prospectsactive ? " active" : "")
+                      }
+                      onClick={this.handleProspectsActive}
+                    >
+                      <div>Prospects</div>
+                    </div>
+                  </Link>
 
                   { this.state.isAuthenticated &&
 
@@ -345,6 +393,24 @@ class App extends Component {
                 <Route
                   path="/staffs/:id"
                   element={<StaffWrapperWithRouter />}
+                ></Route>
+
+                <Route
+                  path="/prospects"
+                  element={
+                    <Prospects
+                      prospects={this.state.prospects}
+                      handleProspectsChange={this.handleProspectsChange}
+                    />
+                  }
+                ></Route>
+
+                <Route path="/prospects/add" element={<AddProspectsForm />}></Route>
+
+                {/* Route to view one prospect */}
+                <Route
+                  path="/prospects/:id"
+                  element={<ProspectWrapperWithRouter />}
                 ></Route>
 
                 <Route

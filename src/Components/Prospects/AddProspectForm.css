@@ -1,0 +1,10 @@
+.add-prospect-form {
+    display: flex;
+    margin-bottom: auto;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    padding: .5rem;
+    border-radius: 15px;
+    background-color: rgb(2, 7, 32);
+    overflow: auto;
+}

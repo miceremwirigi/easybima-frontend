@@ -1,0 +1,20 @@
+.prospect-profile-column{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+    overflow: auto;
+}
+
+
+.prospect-profile-column > div{
+    overflow: visible;
+}
+
+@media screen and (max-width: 480px) {
+    .prospect-profile-column{
+        padding-left: 1rem;
+        width:100% ;
+        overflow: scroll;
+    }
+}
