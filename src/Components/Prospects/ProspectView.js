@@ -90,11 +90,6 @@ export default class ProspectView extends Component {
         })
       )
       .then(() => {
-        temporaryProspect = { ...this.state.updatedprospect }
-        date = new Date(this.state.updatedprospect.expiry_date)
-        dateString = date.toISOString().substring(0, 10); // truncates 2024-07-18T07:57:13.877634Z expected format.
-        temporaryProspect.expiry_date = dateString
-        this.setState({ updatedprospect: temporaryProspect });
         this.setState({ isLoadingData: false });
         
       })
@@ -102,8 +97,11 @@ export default class ProspectView extends Component {
         console.log(error);
       });
 
-      
-      
+      temporaryProspect = { ...this.state.updatedprospect }
+      date = new Date(this.state.updatedprospect.expiry_date)
+      dateString = date.toISOString().substring(0, 10); // truncates 2024-07-18T07:57:13.877634Z expected format.
+      temporaryProspect.expiry_date = dateString
+      this.setState({ updatedprospect: temporaryProspect });      
 
   };
 
