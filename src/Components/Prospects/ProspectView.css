@@ -11,6 +11,10 @@
     overflow: visible;
 }
 
+input#expiry_date {
+    overflow: visible;
+}
+
 @media screen and (max-width: 480px) {
     .prospect-profile-column{
         padding-left: 1rem;

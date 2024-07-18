@@ -86,10 +86,7 @@ export default class Prospect extends Component {
                       <th>Name</th>
                       <th>Contact</th>
                       <th>Policy Type</th>
-                      <th>Expiry Date</th>
                       <th>Expires In</th>
-                      <th>Location</th>
-                      <th>Email</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -119,23 +116,8 @@ export default class Prospect extends Component {
                         </td>
                         <td>
                           <Link to={`/prospects/${prospect.id}`}>
-                            {prospect.expiry_date}
-                          </Link>
-                        </td>
-                        <td>
-                          <Link to={`/prospects/${prospect.id}`}>
                           {this.getNumberofDaysToExpiry(prospect) + " days"}
                           </Link>
-                        </td>
-                        <td>
-                          <Link to={`/prospects/${prospect.id}`}>
-                            {prospect.location}
-                          </Link>
-                        </td>
-                        <td>
-                          <Link to={`/prospects/${prospect.id}`}>
-                            {prospect.email}
-                            </Link>
                         </td>
                       </tr>
                     ))}
