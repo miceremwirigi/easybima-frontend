@@ -6,8 +6,8 @@ export default class Home extends Component {
         return (
             <Fragment>
                 <div className='home'>
-                    <h1>Welcome</h1>
-                    <p> Manage your clients efficiently </p>
+                    <p>Welcome <br/>
+                     </p>
                 </div>
             </Fragment>
         )

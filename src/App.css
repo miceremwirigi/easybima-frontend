@@ -17,6 +17,7 @@
     align-items: center;
     justify-content: center;
     width: 90vw;
+    height: 8vmin;
     
   }
   
@@ -92,13 +93,15 @@
   div.Name-Col > h1 {
     display: flex;
     flex-direction: column;
+    font-size: 4vmin;
     flex-basis: 100%;
     margin-top: auto;
+    margin-bottom: 0;
   }
   
   img.App-Logo{
     display: block;
-    height:15vmin;
+    height:7vmin;
     float: left;
   }
   
@@ -151,7 +154,11 @@
   }
 
   div.list-group > a > div.list-group-item.active > div {
+    font-size: 1.1rem;
+    font-weight:bold ;
     color:rgb(1, 1, 22);
+    /* margin-top: 0;
+    margin-bottom: 0; */
   }
   
   div.list-group > a > div.list-group-item > div{
@@ -161,6 +168,7 @@
     flex-grow: 1;
     justify-content: left;
     font-size: 1.5rem;
+    font-weight:bolder ;
     width: 80%;
   }
   
@@ -208,7 +216,7 @@
     }
   
     #header-row > div.Name-Col > h1{
-      font-size: 1.3rem;
+      font-size: 1.1rem;
     }
   
     #header-row > div.Search-Col {
@@ -246,6 +254,7 @@
       display: flex;
       flex-basis: 100%;
       flex-direction: column;
+      height: fit-content;
     } 
   
     #body-row > div.nav-col > nav > div.list-group{
@@ -278,6 +287,10 @@
       align-items: center;
       justify-content: center;
     }
+
+    div.list-group > a > div.list-group-item.active {
+      height: fit-content;
+  }
   
     #body-row > div.content-col {
       display: flex;  

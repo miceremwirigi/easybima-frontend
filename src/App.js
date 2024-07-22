@@ -227,7 +227,7 @@ class App extends Component {
             <Link to={"/"}>
               <div className="Name-Col ms-3">
                 <img src={logo2} className="App-Logo" alt="logo" />
-                <h1>Geotech</h1>
+                <h1>Bimapap</h1>
               </div>
             </Link>
             <div className="Search-Col ms-3">
@@ -448,7 +448,7 @@ class App extends Component {
             </div>
           </div>
           <div className="row mt-3" id="footer-row">
-            <p>&copy;Geotech2024 </p>
+            <p>&copy;Bimapap2024 </p>
           </div>
         </div>
       </BrowserRouter>
