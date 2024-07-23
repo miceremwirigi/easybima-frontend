@@ -232,11 +232,11 @@ class App extends Component {
             </Link>
             <div className="Search-Col ms-3">
               <div className="Search-Bar">
-                <input type="text" placeholder="Search.."></input>
+                {/* <input type="text" placeholder="Search.."></input> */}
               </div>
             </div>
             <div className="Profile-Col ms-3">
-              <h3>Profile</h3>
+              {/* <h3>Profile</h3> */}
             </div>
           </div>
 

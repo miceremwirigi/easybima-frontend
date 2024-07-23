@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: center;
     width: 90vw;
-    height: 8vmin;
+    height: 5vmin;
     
   }
   
@@ -101,7 +101,7 @@
   
   img.App-Logo{
     display: block;
-    height:7vmin;
+    height:5vmin;
     float: left;
   }
   
@@ -166,7 +166,7 @@
     align-items: center;
     display: flex;
     flex-grow: 1;
-    justify-content: left;
+    justify-content: center;
     font-size: 1.5rem;
     font-weight:bolder ;
     width: 80%;

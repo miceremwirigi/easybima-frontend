@@ -79,6 +79,7 @@ label {
 form > input {
     background-color: rgb(2, 1, 24);
     color: white;
+    color-scheme: dark;
     height: 2rem;
     font-weight: 350;
     font-size: 1.5rem;
