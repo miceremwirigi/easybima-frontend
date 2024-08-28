@@ -68,7 +68,7 @@ class App extends Component {
         staffactive: false,
         prospectsactive: false,
       },
-      isAuthenticated: false,
+      isAuthenticated: true,
     };
 
     this.handleCybersChange = this.handleCybersChange.bind(this);
